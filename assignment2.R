@@ -1,32 +1,32 @@
- 
-
- hasRun<-function(flips,length) {
- 	runLength=1;
- 	for(i in 2:length(flips)) {
-
- 		if(flips[i] == flips[i-1]) {
- 			runLength= runLength+1;
- 		} else {
- 			runLength= 1;
- 		}
-
- 		if(runLength == length) {
- 			return(TRUE);
- 		}
- 	}
- 	return(FALSE);
- }
-
-simulate<-function(trials= 5000,length=7,n=100) {
-	success=0;
-	for (i in 1:trials) {
-		flips<-rbinom(n= n, prob= 0.5, size= 1);
-		if(hasRun(flips,length)) {
-			success= success+1;
-		}
-	}
-	prob= success/trials;
-	return(prob);
+getRunsMatrix<-function(n, runLength) {
+	heads<-rep(1, runLength);
+	tails<-rep(0, n-runLength+1);
+	data<-c(
+		rep(c(heads,tails),n-runLength),
+		heads
+	);
+	return(matrix(data=data,ncol=n,byrow=TRUE));
 }
 
-print(simulate(length=7))
+getFlipsMatrix<-function(n) {
+	return(rbinom(n,1,0.5));
+}
+
+testForRuns<-function(flips, runs, runLength) {
+	prod<- runs %*% flips;
+	return(runLength %in% prod);
+}
+
+getProbability<-function(n=100, runLength=7, tests= 5000) {
+	runs<-getRunsMatrix(n, runLength);
+	passed= 0;
+	for(i in 1:tests) {
+		flips<-getFlipsMatrix(n);
+		if(testForRuns(flips, runs, runLength)){
+			passed= passed+1;
+		}
+	}
+	return(passed/tests);
+}
+
+print(getProbability());
