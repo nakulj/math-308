@@ -1,3 +1,8 @@
+#Creates a matrix enumerating all possible runs of heads
+#Eg. for 3-runs amongst 5 coin flips, returns:
+#11100
+#01110
+#00111
 getRunsMatrix<-function(n, runLength) {
 	heads<-rep(1, runLength);
 	tails<-rep(0, n-runLength+1);
@@ -8,6 +13,7 @@ getRunsMatrix<-function(n, runLength) {
 	return(matrix(data=data,ncol=n,byrow=TRUE));
 }
 
+#Creates a (pseudo-randomly generated) vector of coin flips
 getFlipsMatrix<-function(n) {
 	return(rbinom(n,1,0.5));
 }
