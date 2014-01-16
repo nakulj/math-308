@@ -18,11 +18,14 @@ getFlipsMatrix<-function(n) {
 	return(rbinom(n,1,0.5));
 }
 
+#Tests a particular sequence of flips for
+#presence of a given length of run
 testForRuns<-function(flips, runs, runLength) {
 	prod<- runs %*% flips;
 	return(runLength %in% prod);
 }
 
+#Monte-Carlo simulation to determine probability
 getProbability<-function(n=100, runLength=7, tests= 5000) {
 	runs<-getRunsMatrix(n, runLength);
 	passed= 0;
@@ -35,4 +38,5 @@ getProbability<-function(n=100, runLength=7, tests= 5000) {
 	return(passed/tests);
 }
 
+#Run the test
 print(getProbability());
