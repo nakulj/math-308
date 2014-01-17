@@ -1,0 +1,38 @@
+\documentclass[twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{MATH 308 Exercises 1.11}
+\author{Nakul Joshi}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{\alph{subsection})}
+
+\begin{document}
+\maketitle
+
+\section*{2}
+\subsection{} Observational study.
+\subsection{} No, because of the possibility of confounded effects.
+
+\section*{3}
+\subsection{} Observational study.
+\subsection{} No.
+\subsection{} No, because the study sample was a selected non-random sample of the population.
+
+\section*{5}
+Number of unique subsets of size $N$ is $\binom{N}{n}$.\\
+The number of unique subsets that include a given individual is $\binom{N-1}{n-1}$.\\
+$\therefore$ Required probability= $\binom{N}{n}/\binom{N-1}{n-1}=\frac{n}{N} \qed$
+
+This formula does not change with the individual. Therefore, by symmetry, every person has an equal chance of being in the group $\qed$.
+
+\section*{6}
+\subsection{} From (5), with $N=10^8$ and $n=10^3$, required probability $p= n/N=10^{-5}$.
+\subsection{} Probability of not being in any of 2000 independently chosen samples = $(1-p)^{2000} \approx 98\%$.
+\subsection{} A half-chance of being in at least one sample implies a half-chance of being in no samples. So, if $t$ samples are chosen, \begin{align*}
+&& q^t &= 0.5\\
+&\implies & t&=\left\lceil \frac{\log 0.5}{\log t} \right\rceil\\
+&&&=69315
+\end{align*}
+\end{document}
