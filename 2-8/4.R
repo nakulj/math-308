@@ -12,4 +12,10 @@ barplot(table)
 flights$Day<-factor(flights$Day, levels=c("Mon","Tue","Wed","Thu","Fri","Sat","Sun"))
 table<-table(flights$Day,flights$Delayed30)
 print(table)
-print(table[,"Yes"]/(table[,"Yes"]+table[,"No"]))
+yes<-table[,"Yes"]
+no<-table[,"No"]
+print(yes/(yes+no))
+
+#c
+no<-subset(flights, Delayed30=="No", select(FlightLength))
+yes<-
