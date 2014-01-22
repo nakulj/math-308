@@ -17,5 +17,5 @@ no<-table[,"No"]
 print(yes/(yes+no))
 
 #c
-no<-subset(flights, Delayed30=="No", select(FlightLength))
-yes<-
+no<-subset(flights, Delayed30=="No")$FlightLength
+yes<-subset(flights, Delayed30=="Yes")$FlightLength
