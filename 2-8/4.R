@@ -9,3 +9,5 @@ print(table)
 barplot(table)
 
 #b
+flights$Day<-factor(flights$Day, levels=c("Mon","Tue","Wed","Thu","Fri","Sat","Sun"))
+table<-table(flights$Day,flights$Delayed30)
