@@ -11,3 +11,5 @@ barplot(table)
 #b
 flights$Day<-factor(flights$Day, levels=c("Mon","Tue","Wed","Thu","Fri","Sat","Sun"))
 table<-table(flights$Day,flights$Delayed30)
+print(table)
+print(table[,"Yes"]/(table[,"Yes"]+table[,"No"]))
