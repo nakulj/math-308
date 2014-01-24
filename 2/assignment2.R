@@ -26,7 +26,7 @@ testForRuns<-function(flips, runs, runLength) {
 }
 
 #Monte-Carlo simulation to determine probability
-getProbability<-function(n=100, runLength=7, tests= 5000) {
+getProbability<-function(n=100, runLength=7, tests= 10000) {
 	runs<-getRunsMatrix(n, runLength);
 	passed= 0;
 	for(i in 1:tests) {

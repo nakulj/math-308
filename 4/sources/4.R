@@ -1,5 +1,5 @@
 
-flights<-read.csv("../Data/FlightDelays.csv")
+flights<-read.csv("FlightDelays.csv")
 
 #a
 times<-flights$DepartTime
