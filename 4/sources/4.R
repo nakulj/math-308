@@ -19,3 +19,4 @@ print(yes/(yes+no))
 #c
 no<-subset(flights, Delayed30=="No")$FlightLength
 yes<-subset(flights, Delayed30=="Yes")$FlightLength
+boxplot(yes,no,names=c("Delayed over 30 min","Not delayed over 30 min"))
