@@ -6,7 +6,7 @@
 \title{Math 308 Exercises 2.8}
 \author{Nakul Joshi}
 
-\renewcommand{\thesection}{}
+\newcommand{\setsection}[1]{\setcounter{section}{#1}\section{}}
 \renewcommand{\thesubsection}{\alph{subsection})}
 \newcommand{\includecode}[1]{\lstinputlisting{#1}}
 \newcommand{\code}[1]{\lstinline{#1}}
@@ -16,7 +16,7 @@
 \graphicspath{ {./img/} }
 \maketitle
 
-\section*{2}
+\setsection{2}
 $
 \overline{x}=6.5\\
 m=5.5\\
@@ -26,7 +26,7 @@ f(\overline{x})\neq \tilde{x}\\
 f(m)\neq \tilde{m}
 $
 
-\section*{4}
+\setsection{4}
 
 \subsection{}
 \begin{table}[h]
@@ -67,6 +67,32 @@ Sun & 507 & 44  & 0.07985481\\
 \end{figure}
 
 \subsection{}
-There appears to be no relationship
+There appears to be no relationship.
+
+\setsection{6}
+% Booktabs require to add \usepackage{booktabs} to your document preamble
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Min. & 1st Qu. & Median & Mean  & 3rd Qu. & Max.  \\ \midrule
+8.30 & 23.20   & 30.10  & 30.93 & 38.17   & 51.50
+\end{tabular}
+\end{table}
+
+\subsection{}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{6b1.pdf}
+\end{figure}
+\newpage
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{6b2.pdf}
+\end{figure}
+
+The distribution is approximately normal as shown by the close fit between the normal and theoretical quantiles.
+
+
 
 \end{document}

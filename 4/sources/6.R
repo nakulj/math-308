@@ -1,10 +1,14 @@
-spruces<-read.csv("../Data/Spruce.csv")
+spruces<-read.csv("Spruce.csv")
 
 #a
-changes<-spruces$Ht.Change
-summary(changes)
-hist(changes)
-avg<-mean(changes)
-sd<-sd(changes)
-hist(changes)
-plot(density(changes))
+Ht.change<-spruces$Ht.change
+summary(Ht.change)
+
+#b
+hist(Ht.change)
+qqnorm(Ht.change)
+qqline(Ht.change)
+
+#c
+
+
