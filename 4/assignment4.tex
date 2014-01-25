@@ -70,13 +70,14 @@ Sun & 507 & 44  & 0.07985481\\
 There appears to be no relationship.
 
 \setsection{6}
-% Booktabs require to add \usepackage{booktabs} to your document preamble
+
+\subsection{}
 \begin{table}[h]
 \centering
 \begin{tabular}{@{}llllll@{}}
 \toprule
 Min. & 1st Qu. & Median & Mean  & 3rd Qu. & Max.  \\ \midrule
-8.30 & 23.20   & 30.10  & 30.93 & 38.17   & 51.50
+8.30 & 23.20   & 30.10  & 30.93 & 38.17   & 51.50  \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -93,6 +94,38 @@ Min. & 1st Qu. & Median & Mean  & 3rd Qu. & Max.  \\ \midrule
 
 The distribution is approximately normal as shown by the close fit between the normal and theoretical quantiles.
 
+\subsection{}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{6c.pdf}
+\end{figure}
 
+\newpage
+
+\subsection{}
+% Booktabs require to add \usepackage{booktabs} to your document preamble
+\begin{table}[h]
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Min.  & 1st Qu. & Median & Mean  & 3rd Qu. & Max.  \\ \midrule
+2.912 & 4.318   & 4.762  & 5.274 & 6.518   & 8.919 \\ \bottomrule
+\end{tabular}
+\caption{Summary of F}
+\end{table}
+\begin{table}[h]
+\begin{tabular}{llllll}
+\toprule
+Min.  & 1st Qu. & Median & Mean  & 3rd Qu. & Max.  \\ \midrule
+1.019 & 1.915   & 2.712  & 2.718 & 3.165   & 5.712 \\ \bottomrule
+\end{tabular}
+\caption{Summary of NF}
+\end{table}
+
+\subsection{}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{6e.pdf}
+\end{figure}
+The diameter changes roughly increase with the height changes.
 
 \end{document}
