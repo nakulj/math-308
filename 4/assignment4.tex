@@ -2,6 +2,9 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
 
 \title{Math 308 Assignment 4\\Exercises 2.8}
 \author{Nakul Joshi}
@@ -10,6 +13,7 @@
 \renewcommand{\thesubsection}{\alph{subsection})}
 \newcommand{\includecode}[1]{\lstinputlisting{#1}}
 \newcommand{\code}[1]{\lstinline{#1}}
+\newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \mathrm{d}#4}
 
 \begin{document}
 \lstset{language=R}
@@ -131,4 +135,32 @@ Min.  & 1st Qu. & Median & Mean  & 3rd Qu. & Max.  \\ \midrule
 \end{figure}
 The diameter changes roughly increase with the height changes.
 
+\setsection{8}
+\subsection{}
+To find the median, we need a value $m$ such that, for $a=1/2$:
+\begin{align*}
+a	& = \intg{-\infty}{m}{f(x)}{x}	\\
+	& = \intg{0}{m}{\lambda  e^{-\lambda  x}}{x} \\
+	& = 1-e^{-\lambda m}\\
+\implies e^{-\lambda m} &= 1-a \\
+\implies -\lambda m		&= \log (1-a) \\
+\implies m				&= \lambda^{-1}\log\frac{1}{1-a} \\
+&= \lambda^{-1}\log 2
+\end{align*}
+
+Similarly, for first and third quartiles, we use $a=1/4$, and $a=3/4$, respectively:\begin{align*}
+Q_1=\lambda^{-1}\log\frac{1}{1-\frac{1}{4}}=\lambda^{-1}\log\frac{4}{3}\\
+Q_2=\lambda^{-1}\log\frac{1}{1-\frac{3}{4}}=\lambda^{-1}\log 4
+\end{align*}
+
+\subsection{}
+As with the previous problem:\begin{align*}
+a	& = \intg{-\infty}{m}{f(x)}{x}	\\
+	&= \intg{1}{m}{\frac{\alpha }{x^{\alpha +1}}}{x} \\
+	&= 1-m^{-\alpha}\\
+\implies m &= \sqrt[\alpha]{\frac{1}{1-a}}\\
+&= \sqrt[\alpha]{2} \\
+Q_1 &= \sqrt[\alpha]{\frac{4}{3}}\\
+Q_3 &= \sqrt[\alpha]{4}
+\end{align*}
 \end{document}
