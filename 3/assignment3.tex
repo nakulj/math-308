@@ -1,33 +1,39 @@
 \documentclass[twocolumn]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{cancel}
 \usepackage{amsthm}
 
 \title{MATH 308 Assignment 3\\Exercises 1.11}
 \author{Nakul Joshi}
-\renewcommand{\thesection}{}
+\newcommand{\setsection}[1]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{}}
 \renewcommand{\thesubsection}{\alph{subsection})}
 
 \begin{document}
 \maketitle
 
-\section*{2}
+\setsection{2}
 \subsection{} Observational study.
-\subsection{} No, because of the possibility of confounded effects.
+\subsection{} No, because it is possible that people without dementia are predisposed to drinking alcohol.
 
-\section*{3}
+\setsection{3}
 \subsection{} Observational study.
-\subsection{} No.
-\subsection{} No, because the study sample was a selected non-random sample of the population.
+\subsection{} No, because it is likely that students who already use marijuana would be interested in listening to music that had references to marijuana.
+\subsection{} No, because the study sample was not collected in a controlled, randomized fashion. Further, it excludes students who are not in high school.
 
-\section*{5}
+\setsection{5}
 Number of unique subsets of size $N$ is $\binom{N}{n}$.\\
 The number of unique subsets that include a given individual is $\binom{N-1}{n-1}$.\\
-$\therefore$ Required probability= $\binom{N}{n}/\binom{N-1}{n-1}=\frac{n}{N} \qed$
+$\therefore$ Required probability\begin{align*}
+	&=\binom{N-1}{n-1}/\binom{N}{n}\\
+	&=\frac{(N-1)!}{\cancel{(N-n)!}(n-1)!}\times\frac{\cancel{(N-n)!}n!}{N!}\\
+	&=\frac{(N-1)!}{N!}\times\frac{n!}{(n-1)!}\\
+	&=\frac{n}{N} \qed
+\end{align*}
 
-This formula does not change with the individual. Therefore, by symmetry, every person has an equal chance of being in the group $\qed$.
+This formula does not change with the individual. Therefore, by symmetry, every person has an equal chance of being in the group. $\qed$
 
-\section*{6}
+\setsection{6}
 \subsection{} From (5), with $N=10^8$ and $n=10^3$, required probability $p= n/N=10^{-5}$.
 \subsection{} Probability of not being in any of 2000 independently chosen samples = $(1-p)^{2000} \approx 98\%$.
 \subsection{} A half-chance of being in at least one sample implies a half-chance of being in no samples. So, if $t$ samples are chosen, \begin{align*}
