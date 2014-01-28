@@ -163,4 +163,39 @@ a	& = \intg{-\infty}{m}{f(x)}{x}	\\
 Q_1 &= \sqrt[\alpha]{\frac{4}{3}}\\
 Q_3 &= \sqrt[\alpha]{4}
 \end{align*}
+
+\setsection{13}
+The pmf is $f(x)=\binom{20}{x}0.3^x0.7^{20-x}$. So, the cdf $F(x)=\sum_{i=0}^xf(i)$. Then, there is no such $q$, since 2 is too small ($F(2)<0.04$) and 3 is too large ($F(3)>0.1$).
+
+\setsection{14}
+\subsection{}
+One the QQ plot, the points showed a close fit to the straight line, but the histogram was never symmetric, only sometimes unimodal, and rarely mound-shaped.
+\subsection{}
+While the quality of the fit stayed good, the histograms only had a marginal improvement in terms of resembling a normal distribution (symmetric, unimodal and mound-shaped).
+\subsection{}
+It seems that QQ-normal plots are better for visually determining whether or not data is normally distributed.
+
+\setsection{15}
+% Booktabs require to add \usepackage{booktabs} to your document preamble
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+x  & f & cf & cdf=cf/total \\ \midrule
+4  & 1 & 1  & 0.1          \\
+7  & 1 & 2  & 0.2          \\
+8  & 1 & 3  & 0.3          \\
+9  & 2 & 5  & 0.5          \\
+13 & 1 & 6  & 0.6          \\
+18 & 3 & 9  & 0.9          \\
+21 & 1 & 10 & 1.0          \\ \bottomrule
+\end{tabular}
+\end{table}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.4\textwidth]{15b.pdf}
+\end{figure}
+
+\setsection{17}
+
 \end{document}
