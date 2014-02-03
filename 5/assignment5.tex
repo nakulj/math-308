@@ -1,0 +1,58 @@
+\documentclass[twocolumn]{article}
+\usepackage[symbol]{footmisc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \mathrm{d}#4}
+
+\title{Math 308 Assignment 5\\Salk Vaccine Trial Hypothesis Testing}
+\author{Nakul Joshi}
+\date{16th February 2014}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+\section{Hypergeometric Distribution}
+Under the null hypothesis, we can assume that everyone who developed the disease after the trial would have done so regardless of which group they were put into. Thus, the number of cases $x$ in the treatment group follows a hypergeometric distribution where:\begin{description}
+\item[Population size] $N=200000+200000=400000$
+\item[Cases in population] $K=56+141$
+\item[Size of treatment group] $n=200000$
+\end{description}
+Then, the pmf is:\[
+Pr_{H}(X=k)=\frac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}
+\]
+The requisite $p$-value is then the probability of 56 or fewer of the cases being chosen into the control group:\begin{align*}
+p_H&=\sum_{i=0}^{56}Pr_H(X=i)\\
+&=5.98\times 10^{-10} \text{\footnotemark}
+\end{align*}
+This value is certainly statistically significant, and so we reject the null hypothesis that the Salk vaccine is ineffective.
+\footnotetext{This result was obtained via the \textit{Mathematica} software package.}
+
+\section{Binomial Approximation}
+Even though the trial involves sampling with replacements, the large sample size means that, under the null, the the number of cases in the treatment group can be modelled by the binomial distribution:\begin{description}
+\item[Proportion of cases] $p=K/N=\frac{197}{400000}$
+\end{description}
+The pmf is then:\[
+Pr_{B}(X=k)=\binom{n}{k}p^{k}(1-p)^{K-k}
+\]
+The $p$-value is:\begin{align*}
+p_B&=\sum_{i=0}^{56}Pr_{N}(X=i)\\
+&=2.26\times 10^{-6}
+\end{align*}
+This is four orders higher than $p_H$, but is still extremely low.
+
+\section{Normal Approximation}
+We can further approximate $x$ with normally distributed variable $y$ having $\mu=\frac{n K}{N}$ and $\sigma=\frac{\sqrt{n K (N-K)}}{N}$, giving the pdf:\[
+Pr_N(Y=y)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(y-\mu)^2}{2\sigma^2}}
+\]
+Applying the continuity correction:\begin{align*}
+p_N&=\intg{0}{56+0.5}{Pr_N(y)}{y}\\
+&=1.00\times10^{-15}
+\end{align*}
+Or five orders lower than $p_H$.
+\end{document}
