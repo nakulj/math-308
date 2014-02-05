@@ -1,3 +1,13 @@
+testresample<-function() {
+	# m.rs<-sample(weights,m)
+	# m.rs.avg= mean(m.rs)
+	# n.rs.avg= (total-(m*m.avg))/n
+	indices=sample(1:(m+n),m)
+	m.rs.avg= mean(weights[indices])
+	n.rs.avg= mean(weights[-indices])
+	rs.diff= m.rs.avg-n.rs.avg
+	return(rs.diff>=diff)
+}
 
 births<-read.csv("NCBirths2004.csv")
 
@@ -9,7 +19,7 @@ means<-tapply(births$Weight,births$Smokers,mean)
 m.avg= means[["No"]]
 n.avg= means[["Yes"]]
 
-diff= abs(m.avg-n.avg)
+diff= m.avg-n.avg
 
 #Pool the data
 weights<-births$Weight
@@ -17,17 +27,14 @@ total= sum(weights)
 
 #Run several tests on the pooled data
 passed=0
-tests=10000
+tests=10000000
 for(i in 1:tests) {
-	if(testresample())
-		passed=passed+1;
+	if(testresample()) {
+		passed=passed+1
+	}
+	if(i%%5000 == 0) {
+		print(i/100000)
+	}
 }
-print(passed/tests)
+print(passed)
 
-testresample<-function() {
-	m.rs<-sample(weights,m)
-	m.rs.avg= mean(m.rs)
-	n.rs.avg= (total-(m*m.avg))/n
-	rs.diff= abs(m.rs.avg-n.rs.avg)
-	return(rs.diff<=diff)
-}
