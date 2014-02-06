@@ -27,7 +27,7 @@ total= sum(weights)
 
 #Run several tests on the pooled data
 passed=0
-tests=10000000
+tests=10000
 for(i in 1:tests) {
 	if(testresample()) {
 		passed=passed+1
