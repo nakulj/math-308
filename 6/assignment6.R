@@ -1,7 +1,4 @@
 testresample<-function() {
-	# m.rs<-sample(weights,m)
-	# m.rs.avg= mean(m.rs)
-	# n.rs.avg= (total-(m*m.avg))/n
 	indices=sample(1:(m+n),m)
 	m.rs.avg= mean(weights[indices])
 	n.rs.avg= mean(weights[-indices])
@@ -36,5 +33,5 @@ for(i in 1:tests) {
 		print(i/100000)
 	}
 }
-print(passed)
+print(passed/tests)
 
