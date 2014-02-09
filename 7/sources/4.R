@@ -15,7 +15,7 @@ testResample<-function() {
 
 	test.diff= m.prop- n.prop
 
-	return(test.diff>diff)
+	return(test.diff>diff || test.diff<(-diff))
 }
 
 
@@ -43,7 +43,5 @@ for(i in 1:tests) {
 		passed= passed+1
 }
 
-p=2*passed/tests
-if(p>1) p=1
 
-print(p)
+print(passed/tests)
