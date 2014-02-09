@@ -1,3 +1,8 @@
+testResample<-function() {
+	indices= sample(1:(m+n),m)
+	m.sample= 
+}
+
 
 #Organise the data
 spruces<-read.csv("Spruce.csv")
@@ -9,6 +14,9 @@ means<- tapply(spruces$Ht.change, spruces$Competition, mean)
 m.avg= means[["C"]]
 n.avg= means[["NC"]]
 diff= m.avg-n.avg
+
+#Pool the data
+changes=spruces$Ht.change
 
 #Get resample test statistics
 tests= 10000
