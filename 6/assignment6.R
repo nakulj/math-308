@@ -16,6 +16,8 @@ means<-tapply(births$Weight,births$Smokers,mean)
 m.avg= means[["No"]]
 n.avg= means[["Yes"]]
 
+boxplot[]
+
 diff= m.avg-n.avg
 
 #Pool the data
@@ -28,9 +30,6 @@ tests=10000
 for(i in 1:tests) {
 	if(testresample()) {
 		passed=passed+1
-	}
-	if(i%%5000 == 0) {
-		print(i/100000)
 	}
 }
 print(passed/tests)
