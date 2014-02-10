@@ -1,8 +1,8 @@
 testResample<-function() {
 	indices= sample(1:(m+n),m)
-	m.avg= mean(changes[indices])
-	n.avg= mean(changes[-indices])
-	test.diff= m.avg-n.avg
+	tm.avg= mean(changes[indices])
+	tn.avg= mean(changes[-indices])
+	test.diff= tm.avg-tn.avg
 	return(test.diff>diff || test.diff<(-diff))
 }
 
