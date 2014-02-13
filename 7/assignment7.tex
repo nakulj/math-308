@@ -85,19 +85,16 @@ Thus, we can reject the null at 5\% significance, but not at 1\% significance.
 \item[Alternative hypothesis] Fin ray distributions are different from lake to lake.
 \end{description}
 
-% Please remember to add \use{multirow} to your document preamble in order to suppor multirow cells
 \begin{table}[h]
-\centering
 \begin{tabular}{lrrrrrrr}
 \hline
-\multirow{2}{*}{Habitat} & \multicolumn{7}{c}{Ray Count}                                                                                                                                                  \\ \cline{2-8} 
-                         & \multicolumn{1}{l}{$\geq$36} & \multicolumn{1}{l}{35} & \multicolumn{1}{l}{34} & \multicolumn{1}{l}{33} & \multicolumn{1}{l}{32} & \multicolumn{1}{l}{$\leq$31} & \multicolumn{1}{l}{All}  \\ \hline
-Guadalupe                & 14                     & 30                     & 42                     & 78                     & 33                     & 14                     & \multicolumn{1}{|r}{211} \\
-Cedro                    & 11                     & 28                     & 53                     & 66                     & 27                     & 9                      & \multicolumn{1}{|r}{194} \\
-San Clemente             & 10                     & 17                     & 61                     & 53                     & 22                     & 10                     & \multicolumn{1}{|r}{173} \\ \cline{2-7}
-All                      & 71                     & 110                    & 190                    & 230                    & 114                    & 64                     & 779                      \\ \hline
+\multirow{2}{*}{Habitat}                               & \multicolumn{7}{c}{Ray Count}                                                                                                                                                  \\ \cline{2-8} 
+                                                       & \multicolumn{1}{l}{36} & \multicolumn{1}{l}{35} & \multicolumn{1}{l}{34} & \multicolumn{1}{l}{33} & \multicolumn{1}{l}{32} & \multicolumn{1}{l}{31} & \multicolumn{1}{l}{All}  \\ \hline
+Guadalupe                                              & 14                     & 30                     & 42                     & 78                     & 33                     & 14                     & \multicolumn{1}{|r}{211} \\
+Cedro                                                  & 11                     & 28                     & 53                     & 66                     & 27                     & 9                      & \multicolumn{1}{|r}{194} \\
+\begin{tabular}[c]{@{}l@{}}San\\ Clemente\end{tabular} & 10                     & 17                     & 61                     & 53                     & 22                     & 10                     & \multicolumn{1}{|r}{173} \\ \cline{2-7}
+All                                                    & 71                     & 110                    & 190                    & 230                    & 114                    & 64                     & 779                      \\ \hline
 \end{tabular}
-\caption{Observed Values}
 \end{table}
 
 % Please remember to add \use{multirow} to your document preamble in order to suppor multirow cells
@@ -130,7 +127,19 @@ $c=\sum_{i,j}^\text{all cells}\frac{\text{(observed}_{i,j}-\text{expected}_{i,j}
 	}
 }{t}=8\times10^{-6}$.
 So, we can reject the null.
+
 \setsection{17}
+
+\begin{table}[h]
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\multirow{2}{*}{Happiness} & \multicolumn{2}{c}{Gender}                            \\ \cmidrule(l){2-3} 
+                           & \multicolumn{1}{l}{Female} & \multicolumn{1}{l}{Male} \\ \midrule
+Not too happy              & 109                        & 61                       \\
+Pretty happy               & 406                        & 378                      \\
+Very happy                 & 205                        & 210                      \\ \bottomrule
+\end{tabular}
+\end{table}
 
 \setsection{19}
 
