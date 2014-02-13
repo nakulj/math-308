@@ -5,6 +5,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{booktabs}
 
 \title{Math 308 Assignment 7\\Exercises 3.9}
 \author{Nakul Joshi}
@@ -29,6 +31,27 @@ The null hypothesis is that the difference in proportions is zero. However, perf
 The $p$-value is 1, which does not let us reject the null hypothesis that the presence of competition has no value on the height change of the seedlings.
 
 \setsection{11}
+
+\begin{description}
+\item[Null Hypothesis] Voting preference is independent of age.
+\item[Alternative hypothesis] Voting preference depends on age.
+
+% Please remember to add \use{multirow} to your document preamble in order to suppor multirow cells
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrr}
+\hline
+\multirow{2}{*}{Age} & \multicolumn{3}{c}{Response}                                                     \\ \cline{2-4} 
+                     & \multicolumn{1}{l}{For} & \multicolumn{1}{l}{Against} & \multicolumn{1}{l}{All}  \\ \hline
+18-29                & 172                     & 52                          & \multicolumn{1}{|r}{224} \\
+30-49                & 313                     & 103                         & \multicolumn{1}{|r}{416} \\
+50+                  & 258                     & 119                         & \multicolumn{1}{|r}{377} \\ \cline{2-3}
+All                  & 743                     & 274                         & 1017                     \\ \hline
+\end{tabular}
+\caption{Observed values}
+\end{table}
+
+\end{description}
 
 \setsection{13}
 
