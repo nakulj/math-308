@@ -37,7 +37,7 @@ The $p$-value is 1, which does not let us reject the null hypothesis that the pr
 \item[Alternative hypothesis] Voting preference depends on age.
 
 % Please remember to add \use{multirow} to your document preamble in order to suppor multirow cells
-\begin{table}[h]
+\begin{table}[!ht]
 \centering
 \begin{tabular}{lrrr}
 \hline
@@ -52,6 +52,28 @@ All                  & 743                     & 274                         & 1
 \end{table}
 
 \end{description}
+
+Multiplying column marginal fractions by row marginal totals, we can get the expected values:
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\multirow{2}{*}{Age} & \multicolumn{2}{c}{Response}                          \\ \cmidrule(l){2-3} 
+                     & \multicolumn{1}{l}{For} & \multicolumn{1}{l}{Against} \\ \midrule
+18-29                & 164                     & 60                          \\
+30-49                & 304                     & 112                         \\
+50+                  & 275                     & 102                         \\ \bottomrule
+\end{tabular}
+\caption{Expected values}
+\end{table}
+
+Then, we calculate the $\chi^2$ test statitic:\\
+$c=\sum_{i,j}^\text{all cells}\frac{\text{(observed}_{i,j}-\text{expected}_{i,j})^2}{\text{expected}_{i,j}}=6.33$
+
+Under the null, $C$ follows a $\chi^2$ distribution with $(3-1)\times(2-1)=2$ degrees of freedom; i.e. $C\sim\chi^2_2$. So, the $p$-value is $P(C>c)=\intg{c}{\infty}{\frac{e^{-t/2}}{2}}{t}\approx0.042$.
+
+Thus, we can reject the null at 5\% significance, but not at 1\% significance.
 
 \setsection{13}
 
