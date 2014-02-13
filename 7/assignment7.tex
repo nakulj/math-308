@@ -129,19 +129,53 @@ $c=\sum_{i,j}^\text{all cells}\frac{\text{(observed}_{i,j}-\text{expected}_{i,j}
 So, we can reject the null.
 
 \setsection{17}
-
+\subsection{}
 \begin{table}[h]
+\centering
 \begin{tabular}{@{}lrr@{}}
 \toprule
-\multirow{2}{*}{Happiness} & \multicolumn{2}{c}{Gender}                            \\ \cmidrule(l){2-3} 
-                           & \multicolumn{1}{l}{Female} & \multicolumn{1}{l}{Male} \\ \midrule
-Not too happy              & 109                        & 61                       \\
-Pretty happy               & 406                        & 378                      \\
-Very happy                 & 205                        & 210                      \\ \bottomrule
+\multirow{2}{*}{Happiness} & \multicolumn{2}{c}{Gender} \\ \cmidrule(l){2-3} 
+                           & Female        & Male       \\ \midrule
+Not too happy              & 109           & 61         \\
+Pretty happy               & 406           & 378        \\
+Very happy                 & 205           & 210        \\ \bottomrule
 \end{tabular}
+\caption{Observed happiness against gender data}
 \end{table}
 
+\subsection{}
+
+We get a $p$ value of 0.004, allowing us to reject the null hypothesis of independence at a 1\% significance level.
+
 \setsection{19}
+\subsection{} Let the elements of the contingency table be $o_{i,j}$, and let their corresponding row and column totals be $r_i$ and $c_j$ respectively. Further, let the total number of observations $\sum_{i,j} o_{i,j} = n$. The corresponding expected values are then $e_{i,j}=\frac{r_i c_j}{n}$, which gives the test statistic $c=\sum_{i,j}
+	\frac{
+		(o_{i,j}-e_{i,j})^2
+	}{
+		e_{i,j}
+	}
+$
+
+However, if each element is multiplied by $k$, then $o_{i,j}$,$r_i$, $c_j$ and $n$ are each multiplied by $k$. So, the corresponding expected values become $e^*_{i,j}=\frac{k^2}{k}\times\frac{r_i c_j}{n}=k\times e_{i,j}$. The new test statistic $c^*=\sum_{i,j}
+	\frac{
+		(o^*_{i,j}-e^*_{i,j})^2
+	}{
+		e^*_{i,j}
+	}
+=\sum_{i,j}
+\frac{k^2}{k}\times\frac{
+		(o_{i,j}-e_{i,j})^2
+	}{
+		e_{i,j}
+	}
+=k\times c
+$. Thus, the test statistic is also multiplied by $k$.
+
+However, the marginal probabilities are unchanged since the $k$'s cancel on the row and overall totals. Further, the degrees of freedom are unaffected since they only depend upon $r$ and $c$.
+
+\subsection{}
+
+Originally, the $p$-value was $\intg{c}{\infty}{f(t;k)}{t}$, but the new $p$-value becomes $\intg{kc}{\infty}{f(t;k)}{t}$. Thus, the $p$ value reduces, since $k>1\implies kc>c$, increasing the chances of rejecting the null.
 
 \setsection{22}
 
