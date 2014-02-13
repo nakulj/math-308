@@ -115,6 +115,21 @@ San Clemente             & 16  & 24  & 42 & 51 & 25 & 14 \\ \bottomrule
 \caption{Expected Values}
 \end{table}
 
+$c=\sum_{i,j}^\text{all cells}\frac{\text{(observed}_{i,j}-\text{expected}_{i,j})^2}{\text{expected}_{i,j}}=41.77$, where $C\sim\chi^2_{10}$. So, $p=P(C>c)=\intg{c}{\infty}{
+	\frac{
+	t^{10/2-1}e^{-t/2}
+	}{
+	2^{10/2}\Gamma(10/2)
+	}
+}{t}
+=\intg{c}{\infty}{
+	\frac{
+	t^{4}e^{-t/2}
+	}{
+	768
+	}
+}{t}=8\times10^{-6}$.
+So, we can reject the null.
 \setsection{17}
 
 \setsection{19}
