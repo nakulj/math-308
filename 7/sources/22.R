@@ -11,3 +11,6 @@ probabilities<-seq(0.2, 0.8, 0.2)
 quantiles<-qnorm(probabilities,mean=22,sd=7)
 print(quantiles)
 
+breaks<- c(min(nums),quantiles,max(nums))
+counts<-hist(nums, breaks, plot=FALSE)$counts
+
