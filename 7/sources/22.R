@@ -12,5 +12,10 @@ quantiles<-qnorm(probabilities,mean=22,sd=7)
 print(quantiles)
 
 breaks<- c(min(nums),quantiles,max(nums))
-counts<-hist(nums, breaks, plot=FALSE)$counts
+
+observed<-hist(nums, breaks, plot=FALSE)$counts
+expected<-rep(0.2,1/0.2)*length(nums)
+
+c=sum((observed-expected)^2/expected)
+print(c)
 
