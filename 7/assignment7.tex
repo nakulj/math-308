@@ -182,7 +182,7 @@ Originally, the $p$-value was $\intg{c}{\infty}{f(t;k)}{t}$, but the new $p$-val
 \subsection{}
 
 % Booktabs require to add \usepackage{booktabs} to your document preamble
-\begin{table}[h]
+\begin{table}[!ht]
 \centering
 \begin{tabular}{@{}ll@{}}
 \toprule
@@ -194,7 +194,30 @@ p   & q    \\ \midrule
 \end{tabular}
 \end{table}
 
+\newpage
+
+\subsection{}
+\begin{table}[!ht]
+\centering
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\multicolumn{1}{c}{\multirow{2}{*}{Interval}} & \multicolumn{2}{c}{Counts}                          \\ \cmidrule(l){2-3} 
+                                              & \multicolumn{1}{l}{Obs.} & \multicolumn{1}{l}{Exp.} \\ \midrule
+\textless16.11                                & 16                       & 10                       \\
+16.11--20.23                                  & 13                       & 10                       \\
+20.23--23.77                                  & 9                        & 10                       \\
+23.77--27.89                                  & 9                        & 10                       \\
+\textgreater27.89                             & 3                        & 10                       \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{}
+
+We get a $p$-value of 0.048, which does not let us reject the hypothesis that the data was drawn from a $N(22,7^2)$ distribution.
+
 \setsection{25}
+
+
 
 \setsection{29}
 
