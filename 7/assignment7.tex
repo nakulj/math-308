@@ -7,6 +7,7 @@
 \usepackage{amsthm}
 \usepackage{multirow}
 \usepackage{booktabs}
+\usepackage{cancel}
 
 \title{Math 308 Assignment 7\\Exercises 3.9}
 \author{Nakul Joshi}
@@ -20,13 +21,17 @@
 
 \newcommand{\nsub}[2]{N_{#1 #2}}
 
-\newcommand{\ovi}{\ensuremath{\overline{i}}}
-\newcommand{\ovj}{\ensuremath{\overline{j}}}
+\newcommand{\ovi}{\ensuremath{\overline{\imath}}}
+\newcommand{\ovj}{\ensuremath{\overline{\jmath}}}
 
-\newcommand{\na}{\nsub{i}{j}}
-\newcommand{\nb}{\nsub{i}{\overline{j}}}
-\newcommand{\nc}{\nsub{\overline{i}}{j}}
-\newcommand{\nd}{\nsub{\overline{i}}{\overline{j}}}
+\newcommand{\na}{\ensuremath{\nsub{i}{j}}}
+\newcommand{\nb}{\ensuremath{\nsub{i}{\ovj}}}
+\newcommand{\nc}{\ensuremath{\nsub{\ovi}{j}}}
+\newcommand{\nd}{\ensuremath{\nsub{\ovi}{\ovj}}}
+
+\newcommand{\sumr}{\ensuremath{\na+\nb}}
+\newcommand{\sumc}{\ensuremath{\na+\nc}}
+\newcommand{\sums}{\ensuremath{\na+\nb+\nc+\nd}}
 
 \begin{document}
 \lstset{language=R}
@@ -232,8 +237,27 @@ We get a $p$-value of 0.78, which does not let us reject the hypothesis that the
 
 \setsection{29}
 
-Let $\na{}$ be the element at row $i$ and column $j$. Then, since there are only two rows and two columns, let the remaining row and column indices be \ovi{} and \ovj{} respectively.
+\subsection{}
 
+Let \na be the element at row $i$ and column $j$. Then, since there are only two rows and two columns, let the remaining row and column indices be \ovi{} and \ovj{} respectively.
+Then, the row total is $R_i=\sumr$ and the column total is $C_j=\sumc$. So, the expected value at $i,j$ is\begin{align*}
+\breve{E}[\na]
+&=\frac{R_i\times C_j}{\sums}	\\
+&=\frac{(\sumr)(\sumc)}{\sums}
+\end{align*}
+This gives:\begin{align*}
+&\na-\breve{E}[\na]\\
+&=\na-\frac{(\sumr)(\sumc)}{\sums}\\
+&=\frac{\na(\sums)-(\sumr)(\sumc)}{\sums}\\
+&=\frac{\na(\cancel{\na}+\cancel{\nb}+\cancel{\nc}+\nd)-(\cancel{\na^2}+\cancel{\na\nb}+\cancel{\na\nc}+\nb\nc)}{\sums}\\
+&=\frac{\na\nd-\nb\nc}{\sums}\\
+\end{align*}
+Thus:\[
+(\na-\breve{E}[\na])^2=\left(\frac{\na\nd-\nb\nc}{\sums}\right)^2
+\]
+This expression is symmetrical; i.e., it does not change by swapping $i$ and \ovi{} or $j$ and \ovj{}. Thus, it is the same for all $i,j$ $\qed$.
 
+\subsection{}
 
+Call the previously obtained expression $k$. Then, $C=k/R_1C_1+k/R_1C_2+k/R_2C_1+k/R_2C_2=\frac{k}{R_1R_2C_1C_2}(\sum_{i,j})$
 \end{document}
