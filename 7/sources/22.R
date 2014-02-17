@@ -12,21 +12,19 @@ probabilities<-seq(0.2, 0.8, 0.2)
 quantiles<-qnorm(probabilities,mean=22,sd=7)
 print(quantiles)
 
+
 #b
 
 breaks<- c(min(nums),quantiles,max(nums))
-
 observed<-hist(nums, breaks, plot=FALSE)$counts
-
 print(breaks)
 print(observed)
 
+
+#c
+
 expected<-rep(0.2,1/0.2)*length(nums)
-
 c=sum((observed-expected)^2/expected)
-
 df=(1/0.2)-1
-
 p= 1-pchisq(c,df)
-
 print(p)
