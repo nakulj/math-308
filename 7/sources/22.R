@@ -6,16 +6,27 @@ nums=c(
 	24.66,25.30,25.46,25.91,26.12,26.61,26.72,29.28,31.93,36.94
 )
 
-probabilities<-seq(0.2, 0.8, 0.2)
+#a
 
+probabilities<-seq(0.2, 0.8, 0.2)
 quantiles<-qnorm(probabilities,mean=22,sd=7)
 print(quantiles)
+
+#b
 
 breaks<- c(min(nums),quantiles,max(nums))
 
 observed<-hist(nums, breaks, plot=FALSE)$counts
+
+print(breaks)
+print(observed)
+
 expected<-rep(0.2,1/0.2)*length(nums)
 
 c=sum((observed-expected)^2/expected)
-print(c)
 
+df=(1/0.2)-1
+
+p= 1-pchisq(c,df)
+
+print(p)
