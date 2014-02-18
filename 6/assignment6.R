@@ -16,8 +16,6 @@ means<-tapply(births$Weight,births$Smokers,mean)
 m.avg= means[["No"]]
 n.avg= means[["Yes"]]
 
-boxplot[]
-
 diff= m.avg-n.avg
 
 #Pool the data
