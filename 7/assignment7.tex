@@ -15,7 +15,7 @@
 \newcommand{\setsection}[1]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{}}
 \renewcommand{\thesubsection}{\alph{subsection})}
 \newcommand{\includecode}[1]{\lstinputlisting{#1}}
-\newcommand{\code}[1]{\lstinline{#1}}
+\newcommand{\code}[1]{\lstinline[#1]}%[
 \newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \mathrm{d}#4}
 
 
@@ -31,7 +31,7 @@
 
 \newcommand{\sumr}{\ensuremath{\na+\nb}}
 \newcommand{\sumc}{\ensuremath{\na+\nc}}
-\newcommand{\sums}{\ensuremath{\na+\nb+\nc+\nd}}
+\newcommand{\sums}{\ensuremath{n}}
 
 \begin{document}
 \lstset{language=R}
@@ -248,16 +248,26 @@ Then, the row total is $R_i=\sumr$ and the column total is $C_j=\sumc$. So, the 
 This gives:\begin{align*}
 &\na-\breve{E}[\na]\\
 &=\na-\frac{(\sumr)(\sumc)}{\sums}\\
-&=\frac{\na(\sums)-(\sumr)(\sumc)}{\sums}\\
 &=\frac{\na(\cancel{\na}+\cancel{\nb}+\cancel{\nc}+\nd)-(\cancel{\na^2}+\cancel{\na\nb}+\cancel{\na\nc}+\nb\nc)}{\sums}\\
 &=\frac{\na\nd-\nb\nc}{\sums}\\
 \end{align*}
 Thus:\[
 (\na-\breve{E}[\na])^2=\left(\frac{\na\nd-\nb\nc}{\sums}\right)^2
 \]
-This expression is symmetrical; i.e., it does not change by swapping $i$ and \ovi{} or $j$ and \ovj{}. Thus, it is the same for all $i,j$ $\qed$.
+This expression is symmetrical; i.e., it does not change by swapping $i$ and \ovi{} or $j$ and \ovj{}. So, it is equivalent to:\[
+\left(\frac{N_{11}N_{22}-N_{21}N_{12}}{n}\right)^2
+\]
+which is independent of $i,j$ \qed.
 
 \subsection{}
 
-Call the previously obtained expression $k$. Then, $C=k/R_1C_1+k/R_1C_2+k/R_2C_1+k/R_2C_2=\frac{k}{R_1R_2C_1C_2}(\sum_{i,j})$
+Call the previously obtained expression $k$. Then, \begin{align*}
+C
+&=kn/R_1C_1+kn/R_1C_2+kn/R_2C_1+kn/R_2C_2\\
+&=kn\frac{R_1C_1+R_1C_2+R_2C_1+R_2C_2}{R_1R_2C_1C_2}\\
+&=kn\frac{R_1(C_1+C_2)+R_2(C_1+C_2)}{R_1R_2C_1C_2}\\
+&=kn\frac{n(R_1+R_2)}{R_1R_2C_1C_2}=k\frac{n^3}{R_1R_2C_1C_2}\\
+&=\frac{(N_{11}N_{22}-N_{21}N_{12})^2}{n^2}\frac{n^3}{R_1R_2C_1C_2}\\
+&=n(N_{11}N_{22}-N_{21}N_{12})^2/R_1R_2C_1C_2\qed
+\end{align*}
 \end{document}
