@@ -14,11 +14,8 @@
 \newcommand{\rmd}{\mathrm{d}}
 \newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \rmd#4}
 \newcommand{\der}[2]{\frac{\rmd^#1}{\rmd #2^#1}}
-\newcommand{\sfrac}[2]{
-	\frac{#1}{
-	2^{#2} #2!
-	}
-}
+\newcommand{\hk}{\frac{k}{2}}
+\newcommand{\ga}{\Gamma\left(\hk\right)}
 
 \title{Math 308 Assignment 10\\Mean and Variance of the Chi-Squared Distribution}
 \author{Nakul Joshi}
@@ -28,11 +25,41 @@
 \maketitle
 
 \section{Moment Generating Function}
-From the definition of the m.g.f.,\begin{align*}
-M_Z(t)&=\ev{e^{tX}}\\
+From the definition of the m.g.f., \begin{align*}
+M_X(t)&=\ev{e^{tX}}\\
 &=\intg{0}{\infty}{
-	e^{tx} \frac{1}{2^{k/2}\Gamma(k/2)}
-}{t}
+	e^{tx} \frac{1}{2^{k/2}\ga} x^{\hk-1} e^{-\frac{x}{2}}
+}{x}\\
+\end{align*}
+But, $e^{-\frac{x}{2}}e^{tx}= e^{-x(t-\frac{1}{2})}$.\\
+Substituting $u=x(1/2-t)$, we get $\rmd u= (1/2-t)\rmd x$,\\
+and $u|_{x=0}=0$, $u|_{x=\infty}=\infty$.
+So, we get:\begin{align*}
+M_Z(t)
+&=\intg{0}{\infty}{
+	\frac{1}{2^{k/2} \ga} \frac{u^{\hk-1}}{(1/2-t)^{\hk-1}} \frac{e^{-u}}{1/2-t}
+}{u}\\
+&=\frac{1}{2^{k/2} \ga} \frac{1}{(1/2-t)^{\hk}} \intg{0}{\infty}{
+	u^{\hk-1} e^{-u}
+}{u}\\
+&= \frac{1}{2^{k/2} \ga} \frac{1}{(1/2-t)^{\hk}} \ga \\
+&= (1-2t)^{-\hk}
+\end{align*}
+
+\newpage
+
+\section{Mean and Variance}
+
+From the above m.g.f., we can calulate the derivatives\\
+$M_X'(t)=k(1-2t)^{-\hk-1}$, and\\ $M_X''(t)=k(k+2)(1-2t)^{-\hk-2}$.
+
+This gives \[\mu= \ev{X}= M_X'(0)=k\].
+
+We can also calculate\begin{align*}
+\sigma^2&=\ev{X^2}-{\ev{X}}^2\\
+&=M_X''(0)-k^2\\
+&=k(k+2)-k^2\\
+&=2k
 \end{align*}
 
 \end{document}
