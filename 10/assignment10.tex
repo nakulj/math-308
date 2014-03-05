@@ -1,0 +1,38 @@
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{cancel}
+
+
+\newcommand{\ev}[1]{\mathbb{E}(#1)}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \rmd#4}
+\newcommand{\der}[2]{\frac{\rmd^#1}{\rmd #2^#1}}
+\newcommand{\sfrac}[2]{
+	\frac{#1}{
+	2^{#2} #2!
+	}
+}
+
+\title{Math 308 Assignment 10\\Mean and Variance of the Chi-Squared Distribution}
+\author{Nakul Joshi}
+\date{March 6, 2014}
+
+\begin{document}
+\maketitle
+
+\section{Moment Generating Function}
+From the definition of the m.g.f.,\begin{align*}
+M_Z(t)&=\ev{e^{tX}}\\
+&=\intg{0}{\infty}{
+	e^{tx} \frac{1}{2^{k/2}\Gamma(k/2)}
+}{t}
+\end{align*}
+
+\end{document}

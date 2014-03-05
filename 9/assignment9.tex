@@ -1,0 +1,81 @@
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{cancel}
+
+
+\newcommand{\ev}[1]{\mathbb{E}(#1)}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \rmd#4}
+\newcommand{\der}[2]{\frac{\rmd^#1}{\rmd #2^#1}}
+\newcommand{\sfrac}[2]{
+	\frac{#1}{
+	2^{#2} #2!
+	}
+}
+
+\title{Math 308 Assignment 9\\Moments of the Standard Normal}
+\author{Nakul Joshi}
+\date{March 6, 2014}
+
+\begin{document}
+\maketitle
+
+\section{Moment Generating Function}
+From the definition of the m.g.f.,\begin{align*}
+M_Z(t)&=\ev{e^{tZ}}\\
+&=\intg{-\infty}{\infty}{
+	e^{tx} \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
+	}{x}\\
+&=\intg{-\infty}{\infty}{
+	\frac{1}{\sqrt{2\pi}} e^{-(x-t)^2/2} e^{t^2/2}
+	}{x}\\
+&=e^{t^2/2}\intg{-\infty}{\infty}{
+	f_X(x)
+	}{x}\\
+\text{where $X \sim \mathcal{N}(t,0)$}\\
+&=e^{t^2/2}
+\end{align*}
+
+\section{Moments}
+Using the series expansion of the exponential\[
+e^x=\sum_{i=0}^\infty \frac{x^i}{i!}
+\]
+
+We observe that \begin{align*}
+M_Z(t)	&= \sum_{i=0}^\infty \frac{(t^2/2)^i}{i!} \\
+		&= 1+\frac{t^2}{2}+\sfrac{t^4}{2}+\sfrac{t^6}{3}+\sfrac{t^8}{4} \ldots\\
+M_Z'(t)	&= \frac{2t}{2} + \sfrac{4t^3}{2} + \sfrac{6t^5}{3}+\sfrac{8t^7}{4} \ldots\\
+M_Z''(t)&= 1+\sfrac{4\times 3t^2}{2}+\sfrac{6\times 5t^4}{3}+\sfrac{8\times 7}{4} \ldots
+\end{align*}
+
+\newpage
+
+This tells us that, for odd values of $n$, $M_Z^{(n)}(t)$ will be an expression of the form $t\times (\text{a polynomial})$. Thus, for these values, $M_Z^{(n)}(0)$ is 0.
+
+For the even values of $n$, we can see that $M_Z^{(n)}(t)$ is simply the $n$th derivative of the $\frac{n}{2}$th term in the series expansion of $M_Z(t)$, plus an expression of the form $t\times (\text{a polynomial})$. The latter expression always evaluates to 0 at $t=0$, so we can drop it. To get the $n$th derivative of the $i$th term: \begin{align*}
+	T_i &=\sfrac{t^{2i}}{i}\\
+	\der{n}{t} T_i &= \sfrac{(2i)(2i-1)(2i-2)\ldots(2i-n+1)}{i} t^{2i-n}\\
+	&=\frac{(2i)!}{(2i-n)!}\sfrac{1}{i}t^{2i-n}\\
+	\text{Setting $i$ to $n/2$,}\\
+	\ev{Z^n}&=\frac{n!}{0!}\sfrac{1}{(n/2)}t^0\\
+	&=\frac{n!}{(n/2)!}\frac{1}{2^{n/2}}\\
+\end{align*}
+
+We can then compute and tabulate the moments:
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+$n$   & 0 & 1 & 2 & 3 & 4 & 5 & 6  \\ \midrule
+$\ev{Z^n}$ & 1 & 0 & 1 & 0 & 3 & 0 & 15 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
