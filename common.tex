@@ -1,5 +1,6 @@
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{lmodern}
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -8,7 +9,22 @@
 \usepackage{booktabs}
 \usepackage{cancel}
 
+
+%Math commands
 \newcommand{\ev}[1]{\mathbb{E}(#1)}
 \newcommand{\rmd}{\mathrm{d}}
 \newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \rmd#4}
 \newcommand{\der}[2]{\frac{\rmd^#1}{\rmd #2^#1}}
+
+
+%Sectioning commands
+\newcommand{\setsection}[1]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{}}
+\renewcommand{\thesubsection}{\alph{subsection})}
+
+%Listings commands
+\newcommand{\includecode}[1]{\lstinputlisting{#1}}
+\newcommand{\code}[1]{\lstinline{#1}}
+
+%Common settings
+\lstset{language=R}
+\graphicspath{ {./img/} }
