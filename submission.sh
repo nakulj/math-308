@@ -1,2 +1,15 @@
 #git clean -f -X
-echo $#
+
+
+function zipdir () {
+	zip -r Submission$1.zip $2
+}
+
+
+echo "Zipping assignments "
+for i in ${@:2}
+do
+	zipdir $1 $i
+done
+echo "to Submission$1.zip"
+
