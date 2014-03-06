@@ -14,4 +14,3 @@ do
 	zipdir $1 $i
 	pdf $1 $i
 done
-echo "to Submission$1.zip"
