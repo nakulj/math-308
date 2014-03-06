@@ -15,6 +15,3 @@ do
 	pdf $1 $i
 done
 echo "to Submission$1.zip"
-
-
-python "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o temp.pdf 2/assignment2.pdf
