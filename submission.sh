@@ -6,7 +6,7 @@ function zipdir () {
 }
 
 function pdf () {
-	"/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py -o print$1.pdf ${@:2}"
+	"/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o print$1.pdf ${@:2}
 }
 
 pdflist=""
