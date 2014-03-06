@@ -2,11 +2,10 @@
 
 
 function zipdir () {
-	zip -r Submission$1.zip $2 -x \*.tex
+	zip -r Submission$1.zip $2 -x \*.tex $2/img\*
+	#"/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o temp.pdf $2/assignment$2.
 }
 
-
-echo "Zipping assignments "
 for i in ${@:2}
 do
 	zipdir $1 $i
