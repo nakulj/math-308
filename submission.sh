@@ -2,7 +2,7 @@
 
 
 function zipdir () {
-	zip -r Submission$1.zip $2 x@exclude.lst
+	zip -r Submission$1.zip $2 -x \*.tex
 }
 
 
