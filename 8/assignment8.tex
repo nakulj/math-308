@@ -1,0 +1,149 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+
+\newcommand{\sm}[1]{\mu_{\overline{#1}}}
+\newcommand{\sv}[1]{\sigma^2_{\overline{#1}}}
+\newcommand{\fmin}{f_{\text{min}}}
+\newcommand{\Fmin}{F_{\text{min}}}
+\newcommand{\fmax}{f_{\text{max}}}
+\newcommand{\Fmax}{F_\text{max}}
+\newcommand{\lo}{\lambda_1}
+\newcommand{\lt}{\lambda_2}
+
+\title{MATH 308 Assignment 8:\\Exercises 4.4}
+
+\begin{document}
+\maketitle
+
+\setsection{1}
+\img{1.pdf}
+\noindent Population median: 5.5\\
+Mean of sample medians: 5.7
+
+\newpage
+
+\setsection{2}
+\img{2.pdf}
+\noindent Mean of minimums: 4.8\\
+
+
+\setsection{6}
+From the CLT, the sample mean is approximately distributed normally with $\sm{X}=\mu=48$ and $\sv{X}=\frac{\sigma^2}{n}=9^2/20=2.7$. Thus the probability of the sample mean being greater than 51 is \code{1-pnorm(51,mean=48,sd=sqrt(2.7))} which evaluates to $\approx 3\%.$
+
+\setsection{9}
+The mean $\mu$ of the distribution is $\intg{2}{6}{f(x)}{x}=4$. The variance $\sigma^2$ is $\intg{2}{6}{(x-\mu)^2f(x)}{x}=2.4$. By CLT, the distribution of the sample mean $\overline{X}$ is approximated by $\mathcal{N}(\mu,\frac{\sigma^2}{n})=\mathcal{N}(4,3/305)$. Thus, $P(\overline{X}>=4.2)$ is \code{1-pnorm(4.2,mean=4,sd=sqrt(2.4))}, which evaluates to $\approx 2\%$.
+
+\setsection{10}
+By CLT, the number of people with degrees is approximately normally dustributed with $\mu=np$ and $\sigma^2=np(1-p)$. Thus, the probability of between 220 and 230 people in the sample having a degree is: \begin{lstlisting}
+n=800
+p=0.286
+m=n*p
+sd=sqrt(n*p*(1-p))
+pn=
+pnorm(230+0.5,m,sd)
+-pnorm(220-0.5,m,sd)
+\end{lstlisting}
+Which evaluates to $0.3194833$. The exact probability is given by \begin{lstlisting}
+pb=pbinom(230,n,p)-pbinom(220,n,p)
+\end{lstlisting} which evaluates to $0.2959644$. The error in the approximation is \code{(pn-pb)/pb} which evaluates to $\approx 8\%$.
+
+
+\setsection{15}
+By definition, $W \sim \chi_n^2$. The sampling distributions of $W_n$ for $n\in\{2,3,4,5\}$ are shown in the accompanying figure.
+\img{15.pdf}
+The means and variances are tabulated as:
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}rrr@{}}
+\toprule
+\multicolumn{1}{l}{$n$} & \multicolumn{1}{l}{$\mu$} & \multicolumn{1}{l}{$\sigma^2$} \\ \midrule
+2                     & 2.02                  & 4.07                  \\
+3                     & 2.99                  & 5.82                  \\
+4                     & 3.98                  & 7.80                  \\
+5                     & 4.99                  & 10.01                 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+From the table, we can see that $\mu=n$ and $\sigma^2=2n$.
+
+\setsection{18}
+\subsection{}
+The sampling distribution is shown below:\img{18.pdf}
+\subsection{}
+The mean from sample is $3.00$ with standard error $0.55$.
+From CLT, we expect $\mu_{\overline{X}}=\mu=(1/3)^{-1}=3$ and $\sigma_{\overline{X}}=\sigma/\sqrt{n}=(1/3)^{-1}/\sqrt{30}\approx 0.55$, giving a difference of $<1\%$.
+\subsection{}
+We get $P=0.83$.
+\subsection{}
+We get $P=0.82$, which is only $\approx 1\%$ off.
+
+
+\setsection{20}
+\subsection{Distribution of Sample Minimum}
+\begin{align*}
+&&P(X_{\text{min}} \ge x) &= \prod_{i=1}^n P(X_i \ge x) \\
+&\implies& 1-\Fmin(x) &= (1-F(x))^n\\
+&\implies& -\fmin(x) &= n(1-F(x))^{n-1} (-f(x))\\
+&\implies& \fmin(x) &= n\left(1-F(x)\right)^{n-1}f(x) \qed
+\end{align*}
+\subsection{Distribution of Sample Maximum}
+\begin{align*}
+&&P(X_{\text{max}} \le x) &= \prod_{i=1}^n P(X_i \le x) \\
+&\implies& \Fmax(x) &= F^n(x)\\
+&\implies& \fmax(x) &= nF^{n-1}(x)f(x) \qed
+\end{align*}
+
+\setsection{22}
+\subsection{}
+$F(x)=\intg{1}{x}{\frac{2}{x^2}}{x}=2-2/x$, so from previous result $\fmax=2\left(2-\frac{2}{x}\right)^{2-1}\frac{2}{x^2}=2\left(2-\frac{2}{x}\right)\frac{2}{x^2}$.
+\subsection{}
+$E_{X_{\text{max}}}=\intg{1}{2}{x\fmax(x)}{x}\approx 1.55.$
+
+\setsection{25}
+\begin{align*}
+f_{X_1+X_2}(x)&=P(X_1+X_2=x)\\
+&=\sum_{i=0}^x\left(
+	\frac{\lo^i}{i!}e^{-\lo}
+	\frac{\lt^{x-i}}{(x-i)!}e^{-\lt}
+\right)\\
+&=e^{-(\lo+\lt)}\sum_{i=0}^x\frac{
+	\lo^i\lt^{x-i}
+}{
+	i!(x-i)!
+}\\
+&=\frac{e^{-(\lo+\lt)}}{x!}
+\sum_{i=0}^x\left(
+	\frac{x!}{i!(x-i)!}
+	\lo^i\lt^{x-i}
+\right)\\
+&=\frac{e^{-(\lo+\lt)}}{x!}
+\sum_{i=0}^x\left(
+	\binom{x}{i}
+	\lo^i\lt^{x-i}
+\right)\\
+&=\frac{e^{-(\lo+\lt)}}{x!}(\lo+\lt)^x\\
+&=f_Z(x)\text{, where }Z\sim\mathcal{P}(\lo+\lt)
+\end{align*}\begin{align*}
+&\implies X\sim\mathcal{P}\left(\sum_{i=1}^{10}\lambda_i\right)\\
+&\implies X\sim\mathcal{P}(30)\\
+&\implies f_X(x)=\frac{30^x}{x!}e^{30}
+\end{align*}
+
+\setsection{27}
+\subsection{} The distribution seems quite close to normal.
+\subsection{}
+Theoretical mean $\mu_{\overline{X}}=\mu=10.17$. Actual mean is $10.02$. Difference is $\approx1.5\%$.
+\subsection{}
+Theoretical s.e. $\sigma_{\overline{X}}=\frac{\sigma}{n}\sqrt{\frac{N-n}{N-1}}\approx4.55$. Actual s.e. $4.56$. Difference is $<1\%$.
+\subsection{}
+The differences reduce with increasing $n$.
+
+\setsection{28}
+It can be seen from the plots below that the distribution of sample variances is approximately normal, and the fit to normal improves with sample size.
+\img{28a.pdf}
+\img{28b.pdf}
+\img{28c.pdf}
+\img{28d.pdf}
+\end{document}

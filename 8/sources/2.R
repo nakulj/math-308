@@ -1,0 +1,5 @@
+x=c(3,6,7,9,11,14)
+samples<-combn(x,3)
+sampleMins<-apply(samples,2,min)
+hist(sampleMins)
+print(mean(sampleMins))

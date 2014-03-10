@@ -1,0 +1,6 @@
+x=c(1, 2, 5, 6, 10, 12)
+samples<-combn(x,3)
+sampleMedians<-apply(samples,2,median)
+hist(sampleMedians)
+print(median(x))
+print(mean(sampleMedians))

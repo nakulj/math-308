@@ -12,6 +12,7 @@
 
 %Math commands
 \newcommand{\ev}[1]{\mathbb{E}(#1)}
+\newcommand{\ov}[1]{\mathbb{O}(#1)}
 \newcommand{\rmd}{\mathrm{d}}
 \newcommand{\intg}[4]{\int_{#1}^{#2} \! #3 \, \rmd#4}
 \newcommand{\der}[2]{\frac{\rmd^#1}{\rmd #2^#1}}
@@ -26,6 +27,13 @@
 \newcommand{\code}[1]{\lstinline{#1}}
 
 %Common settings
-\lstset{language=R}
+\lstset{language=R,basicstyle=\ttfamily}
 \graphicspath{ {./img/} }
 \author{Nakul Joshi}
+
+\newcommand{\img}[1]{
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.4\textwidth]{#1}
+\end{figure}
+}
