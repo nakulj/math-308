@@ -12,3 +12,4 @@ do
 	pdflist="$pdflist $i/assignment$i.pdf"
 done
 pdf $1 $pdflist
+zip -r Submission$1.zip print$1.pdf
