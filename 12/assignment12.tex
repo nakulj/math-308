@@ -1,0 +1,30 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+\title{MATH 308 Assignment 12:\\Sequences in Coin Flips}
+\date{March 26, 2014}
+
+\begin{document}
+\maketitle
+
+\section{Expected Number of Occurences}
+For each coin flip $i$, let $X_i$ be the event that the sequence $01111111$ occurs starting at position $i$. Then:\[
+\ev{\mathbbm{1}(X_i)}=\begin{cases}
+	2^{-8},& \text{if } 1 \le i \le 93 \\
+	0,& \text{if } i>93
+\end{cases}
+\]
+So, the expected number of occurences is:\begin{align*}
+N	&= \ev{\sum_{i=1}^{100} \mathbbm{1}(X_i)}\\
+	&= \sum_{i=1}^{100} \ev{\mathbbm{1}(X_i)}\\
+	&= \sum_{i=1}^{93} \ev{\mathbbm{1}(X_i)}\\
+	&= 93/2^8 \approx 0.363
+\end{align*}
+
+\newpage
+
+\section{Probability of Occurence}
+Using the result above, we can approximate the coin-flipping experiment as a Poisson process with rate parameter $\lambda=93/2^8$.
+
+The requisite probability can then be calculated as \code{1-ppois(0,93/2^8)}, which comes out to $\approx{0.30}$, which is slightly under the result from Assignment 2.
+\end{document}
