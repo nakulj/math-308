@@ -1,0 +1,44 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+\newcommand{\str}[1]{\overbrace{a_#1a_#1\ldots a_#1}^{k_#1 \text{times}}}
+
+\title{MATH 308 Assignment 15:\\Exercises 5.10}
+\date{March 26, 2014}
+
+\begin{document}
+\maketitle
+
+\setsection{5}
+
+\subsection{} Suppose that cookie orders are represented such that, for example, an order of 1 sugar, 2 chocolate chips, 0 oatmeal, 0 peanut butter, and 2 ginger snaps is given by $|c|cc|cc|$. Then, two of the bars are fixed, giving the string $|???????|$, where the nine $?$ symbols are to be replaced by five $c$'s and two $|$'s. If we choose $5$ distinct positions in which to place the $c$'s, the positions of the remaining $|$'s is fixed. Thus, the number of possible cookie orders is $\binom{9}{5}$.
+
+\subsection{}
+More generally, we can use `cookie types' to represent occurances of particular elements in the chosen sets. Then, fixing the position of two $|$'s leaves $n+1-2=n-1$ $|$'s and  $n$ $c$'s, for a total of $2n-1$ symbols. Picking element members requires $n$ position choices, giving the total number of set choices as $\binom{2n-1}{n}$.
+
+\subsection{}
+For a sample $S$ of size $n$, each bootstrap sample represents the choice of $n$ elements from $S$ with replacement. Thus, the number of bootstrap samples is as above $\binom{2n-1}{n}$.
+
+\setsection{6}
+\subsection{}
+The number of bootstrap samples with $k_1$ $a_1$'s, $k_2$ $a_2$'s \ldots $k_n$ $a_n$'s is the same as the number of permutations of the string \[
+\underbrace{\str{1}\str{2}\ldots \str{n}}_{n \text{ symbols}}
+\]
+Using the formula for string permuations with repeated characters, this yields \[\frac{n!}{k_1!k_2!\ldots k_n!}\]
+which, by definition, equals
+\[\binom{n}{k_1,k_2\ldots k_n}\qed\]
+
+\subsection{}
+A bootstrap sample with $k_i$ $a_i$'s requires choosing $k_i$ of $n$ positions, after which the remaining $n-k_i$ positions can be filled by any of the remaining $n-1$ elements. Thus, the number of such samples is: \[(n-1)^{n-k_i}\binom{n}{k_i}\]
+The total number of bootstrap samples is simply $n^n$. Thus, the required probability is \[
+\frac{(n-1)^{n-k_i}}{n^n}\binom{n}{k_i}
+\]
+
+\setsection{8}
+\setsection{9}
+\setsection{10}
+\setsection{11}
+\setsection{12}
+\setsection{14}
+
+\end{document}
