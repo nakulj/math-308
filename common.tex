@@ -22,6 +22,10 @@
 %Sectioning commands
 \newcommand{\setsection}[1]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{}}
 \renewcommand{\thesubsection}{\alph{subsection})}
+\renewcommand{\thesubsubsection}{
+	\alph{subsection}.
+	\arabic{subsubsection}
+}
 
 %Listings commands
 \newcommand{\includecode}[1]{\lstinputlisting{#1}}

@@ -1,0 +1,17 @@
+\newcommand{\ninefig}[1]{
+\begin{figure}[!ht]
+\centering
+  \begin{minipage}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{9even#1.pdf}
+  \end{minipage} \begin{minipage}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{9odd#1.pdf}
+  \end{minipage}
+\end{figure}
+}
+
+\ninefig{14}
+\ninefig{36}
+\ninefig{200}
+\ninefig{10000}
+
+The evennes of $N$ does not seem to affect the histograms, but increasing $N$ reduces the spread.
