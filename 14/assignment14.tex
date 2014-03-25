@@ -1,0 +1,34 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+\title{MATH 308 Assignment 14:\\Distribution of Second Largest Element}
+\date{March 26, 2014}
+
+\begin{document}
+\maketitle
+\section{Distribution of Second-Largest Element}
+Let the distribution being sampled have pdf $f(x)$, and let $X=\{X_1,X_2,X_3\ldots X_n\}$ be the set of random variables drawn from that distribution. Further, let $Y$ be the second largest element of $X$. Then, for any value $x$, we have:\begin{align*}
+P(Y=x) &= P(\text{some }X=x\text{ \& }n-2\text{ of other }X<x)\\
+&= \sum_{i=1}^nP(X_i=x)P(n-2\text{ of other }X<x))\\
+&= nP(X_1=x)\\
+&\binom{n-1}{n-2}P^{n-2}(X_1<x)P(X_1>x)\\
+&= \frac{n(n-1)!}{1!(n-2)!}f(x)F^{n-2}(x)(1-F(x))\\
+\implies f_Y(x) &= n(n-1)f(x)F^{n-2}(x)(1-F(x))\\
+\end{align*}
+
+\newpage
+
+\section{Expected value from $\mathcal{U}(1,2)$}
+We know that $f(x)=1$ and $F(x)=x$ in the range $[0,1]$. Therefore, \begin{align*}
+f_Y(x) &= n(n-1)f(x)F^{n-2}(x)(1-F(x))\\
+&= n(n-1)(1)(x^{n-2})(1-x)\\
+&= n(n-1)x^{n-1}(1-x)\\
+\end{align*}
+\begin{align*}
+\implies \ev{Y}&=\intg{0}{1}{n(n-1)x^{n-2}(1-x)}{x}\\
+&= n(n-1)\intg{0}{1}{x^{n-1}-x^n}{x}\\
+&= n(n-1)\left(\frac{1}{n}-\frac{1}{n+1}\right)\\
+&= \cancel{n}(n-1)\frac{\cancel{n+1-n}}{\cancel{n}(n+1)}\\
+&=\frac{n-1}{n+1}
+\end{align*}
+\end{document}

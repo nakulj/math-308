@@ -22,7 +22,7 @@ test<-function(n=10, tests= 20000) {
 	bsEst1= mean(apply(resamples,1,var))
 	bsEst2= rescale(bsEst1,n)
 	
-	bias1= bsEst1-est2
+	bias1= bsEst1-est2n
 	bias2= bsEst2-est2
 
 	print(bias1)
