@@ -23,7 +23,7 @@ test<-function(n=10, tests= 20000) {
 	bsEst2= rescale(bsEst1,n)
 	
 	bias1= bsEst1-est2
-	bias2= bsEst2-est1
+	bias2= bsEst2-est2
 
 	print(bias1)
 	print(bias2)
