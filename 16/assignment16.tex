@@ -1,0 +1,55 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+\newcommand{\phat}{\ensuremath{\hat{p}}}
+\newcommand{\lhat}{\hat{\lambda}}
+
+\title{MATH 308 Assignment 16:\\Exercises 6.4}
+\date{April 10, 2014}
+
+\begin{document}
+\maketitle
+
+\setsection{1}
+We know that $X\sim\mathcal{B}(n,p)\implies f_X(x)=\binom{n}{x}p^x(1-p)^{n-x}$. Thus, the probability of obtaining the value $X$ can be written as a function of the parameter $p$:
+\begin{align*}
+f(p)=\binom{n}{X}p^X(1-p)^{n-X}
+\end{align*}
+\begin{align*}
+\implies f'/\binom{n}{X}&=Xp^{X-1}(1-p)^{n-X}\\
+&-p^X(n-X)(1-p)^{n-X-1}
+\end{align*}
+We can then obtain the MLE \phat{} by setting $f'=0$:\begin{align*}
+&Xp^{X-1}(1-p)^{n-X}=p^X(n-X)(1-p)^{n-X-1}\\
+&\implies \phat(n-X)=X(1-\phat)\\
+&\implies \phat n-\cancel{\phat X}=X-\cancel{X\phat}\\
+&\implies \phat=X/n \qed
+\end{align*}
+
+\setsection{2}
+$X\sim\mathcal{P}(\lambda)\implies f_X=\frac{\lambda^xe^{-\lambda}}{x!}$. So, the likelihood of obtaining the sample $\{x_1,x_2,\ldots x_n\}$ is $L(\lambda)=\prod_{i=1}^nf_X(x_i)$, since the elements of the sample are i.i.d.\begin{align*}
+L&=\prod_{i=1}^n\frac{\lambda^{x_i}e^{-\lambda}}{x_i!}\\
+&=\frac{\lambda^{\Sigma x_i}e^{-n\lambda}}{\prod (x_i!)}
+\end{align*}
+\begin{align*}
+\implies L'/\prod (x_i!)&= \left(\lambda^{\Sigma x_i}e^{-n\lambda}\right)'\\
+&= \Sigma x_i \lambda^{\Sigma x_i-1} e^{-n\lambda}
++ \lambda^{\Sigma x_i}e^{-n\lambda}(-n)\\
+&=e^{-n\lambda}\lambda^{\Sigma x_i-1}\left( \Sigma x_i - n\lambda \right)
+\end{align*}
+Setting $L'=0$, we get $\lhat$:\begin{align*}
+&0=\Sigma x_i - n\lhat\\
+&\implies\lhat= \Sigma x_i/n = \overline{x}\qed
+\end{align*}
+\setsection{4}
+\setsection{5}
+\setsection{10}
+\setsection{12}
+\setsection{14}
+\setsection{16}
+\setsection{25}
+\setsection{27}
+\setsection{34}
+\setsection{36}
+
+\end{document}
