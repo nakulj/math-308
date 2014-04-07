@@ -3,6 +3,8 @@
 
 \newcommand{\phat}{\ensuremath{\hat{p}}}
 \newcommand{\lhat}{\hat{\lambda}}
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\arabic{equation}}
 
 \title{MATH 308 Assignment 16:\\Exercises 6.4}
 \date{April 10, 2014}
@@ -112,18 +114,70 @@ e^\frac{-\Sigma x^2-n\mu^2+2\mu\Sigma x}{2\sigma^2}
 
 
 \setsection{12}
-\begin{gather*}
+
+\begin{gather}
 \begin{aligned}
-L(r,\lambda)&=\prod_{i=1}^n\frac{\lambda^r}{\Gamma(r)}x_i^{r-1}e^{-\lambda x_i}\\
-&=\frac{\lambda^{nr}}{\Gamma^n(r)}(\Pi x)^{r-1}e^{-\lambda\Sigma x}\\
+L(r,\lambda)&=\prod_{i=1}^n\frac{\lambda^r}{\Gamma(r)}x_i^{r-1}e^{-\lambda x_i}\nonumber\\
+&=\frac{\lambda^{nr}}{\Gamma^n(r)}(\Pi x)^{r-1}e^{-\lambda\Sigma x}\nonumber\\
 \end{aligned}\\
-\log L=nr\log\lambda+(r-1)\log(\Pi x)\\
--\lambda\Sigma x-n\log\Gamma(r)\\
-\implies \frac{\partial\log L}{\partial r}=n\log\lambda+\log(\Pi x)
-\end{gather*}
+\log L=nr\log\lambda+(r-1)\log(\Pi x)\nonumber\\
+-\lambda\Sigma x-n\log\Gamma(r)\nonumber\\
+\implies \frac{1}{L}\frac{\partial L}{\partial r}=n\log\lambda+\log(\Pi x)-n\psi(r)\nonumber\\
+\implies n\psi(\hat r)=n\log\hat\lambda+\log(\Pi x)\\
+\text{And }\frac{1}{L}\frac{\partial L}{\partial \lambda}=nr/\lambda-\Sigma x\nonumber\\
+\implies \hat\lambda=\frac{n\hat r}{\Sigma x}
+\end{gather}
+
+\newpage
 
 \setsection{14}
+\begin{gather}
+X=\{2,3,5,9,10\}\nonumber\\
+f(x)=\frac{1}{\beta-\alpha+1},\alpha\le x\le\beta\nonumber\\
+\implies \ev{X^k}=\sum_{x=\alpha}^\beta {\frac{x^k}{\beta-\alpha+1}}\nonumber\\
+\begin{aligned}
+\implies \overline X
+&=\frac{\sum_{x=\hat\alpha}^{\hat\beta} x}{\hat\beta-\hat\alpha+1}\\
+&=(\hat\beta+\hat\alpha)/2\label{eq1}\\
+\end{aligned}\\
+\begin{aligned}
+\text{And }\overline{X^2}
+&=\frac{\sum_{x=\hat\alpha}^{\hat\beta} x^2}{\hat\beta-\hat\alpha+1}\\
+&=(\hat\beta-\hat\alpha+2\hat\alpha^2\hat\beta^2+2\hat\beta^2+2\hat\alpha^2)/6\label{eq2}
+\end{aligned}
+\end{gather}
+Where $\overline X=\Sigma X/n=5.8$ and $\overline{X^2}=\Sigma X^2/n=43.8$. Solving \ref{eq1} and \ref{eq2}, we get:\begin{gather*}
+\hat\alpha=\overline X-\frac{\sqrt{12\overline{X}^2+12\overline{X^2}}-1}{2}\approx 1\\
+\hat\beta=\overline X+\frac{\sqrt{12\overline{X}^2+12\overline{X^2}}-1}{2}\approx 11
+\end{gather*}
+
+
 \setsection{16}
+\subsection{}
+\begin{gather}
+\ev{X}=r/\lambda\nonumber\\
+\implies \overline X=\hat r/\hat \lambda\label{eq161}\\
+\begin{aligned}
+\ev{X^2}&=\text{Var}(X)+\ev{X}^2\\
+&=r/\lambda^2+r^2/\lambda^2\\
+&=r(1+r)/\lambda\\
+\end{aligned}\nonumber\\
+\implies \overline{X^2}=\hat r(1+\hat r)/{\hat{\lambda}}^2\label{eq162}
+\end{gather}
+Solving \ref{eq161} and \ref{eq162},
+\[
+r=\frac{\overline{X}^2}{\overline{X^2}-\overline{X}^2}\approx 2.67
+\]\[
+\lambda=\frac{\overline{X}}{\overline{X^2}-\overline{X}^2}\approx 3.84
+\]
+
+\subsection{}
+We run a test on the null hypothesis $H_0$ that the data are $\sim\Gamma(\hat r,\hat\lambda)$, against the alternative hypothesis $H_A$ that they are not. Running the goodness-of-fit test yields a $p$-value of 0.78, allowing us to strongly favour $H_0$.
+
+\subsection{}
+\img{16a.pdf}
+\img{16b.pdf}
+
 \setsection{25}
 \setsection{27}
 \setsection{34}
