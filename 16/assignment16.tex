@@ -192,7 +192,24 @@ For an unbiased estimator of $\mu$,\begin{gather*}
 \end{gather*}
 
 \setsection{27}
+\subsection{}
+\begin{gather*}
+\begin{aligned}
+&\ev{\hat{\sigma}^2}\\
+&=\frac{1}{n}\e\Sigma(X_i^2+\overline X^2-2X_i\overline X)\\
+&=\frac{1}{n}(\e\Sigma X_i^2+n\e\overline X^2-2\e(\overline X\Sigma X_i))\\
+&=\frac{1}{n}\e\Sigma X_i^2+\e\overline X^2-2\e\overline X^2\\
+&=\frac{1}{n}\e\Sigma X_i^2-\e\overline X^2\\
+&=\cancel{\mu^2}+\sigma^2-\cancel{\mu^2}-\sigma^2/n\\
+&=\sigma^2(1-1/n)\\
+\end{aligned}\\
+\begin{aligned}
+\implies \mathrm{Bias}(\hat\sigma^2)&=\ev{\hat\sigma^2}-\sigma^2\\
+&=\sigma^2(1-1/n-1)=-\sigma^2/n
+\end{aligned}
+\end{gather*}
 
+\subsection{}
 
 
 \setsection{34}
