@@ -3,8 +3,10 @@
 
 \newcommand{\phat}{\ensuremath{\hat{p}}}
 \newcommand{\lhat}{\hat{\lambda}}
+%\newcommand{\max}{\mathrm{max}}
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\bar}[1]{\overline{#1}}
 
 \title{MATH 308 Assignment 16:\\Exercises 6.4}
 \date{April 10, 2014}
@@ -17,52 +19,43 @@ We know that $X\sim\mathcal{B}(n,p)\implies f_X(x)=\binom{n}{x}p^x(1-p)^{n-x}$. 
 \begin{gather*}
 L(p)=\binom{n}{X}p^X(1-p)^{n-X}\\
 \begin{aligned}
-\implies L'/\binom{n}{X}&=Xp^{X-1}(1-p)^{n-X}\\
+\implies L'/\binom{n}{X}=&Xp^{X-1}(1-p)^{n-X}\\
 &-p^X(n-X)(1-p)^{n-X-1}
 \end{aligned}
 \end{gather*}
-We can then obtain the MLE \phat{} by setting $L'=0$:\begin{align*}
-&Xp^{X-1}(1-p)^{n-X}=p^X(n-X)(1-p)^{n-X-1}\\
-&\implies \phat(n-X)=X(1-\phat)\\
-&\implies \phat n-\cancel{\phat X}=X-\cancel{X\phat}\\
-&\implies \phat=X/n \qed
-\end{align*}
+We can then obtain the MLE \phat{} by setting $L'=0$:\begin{gather*}
+Xp^{X-1}(1-p)^{n-X}=p^X(n-X)(1-p)^{n-X-1}\\
+\implies \phat(n-X)=X(1-\phat)\\
+\implies \phat n-\cancel{\phat X}=X-\cancel{X\phat}\\
+\implies \phat=X/n \qed
+\end{gather*}
 
 \setsection{2}
-$X\sim\mathcal{P}(\lambda)\implies f_X=\frac{\lambda^xe^{-\lambda}}{x!}$. So, the likelihood of obtaining the sample $\{x_1,x_2,\ldots x_n\}$ is $L(\lambda)=\prod_{i=1}^nf_X(x_i)$, since the elements of the sample are i.i.d.\begin{align*}
+$X\sim\mathcal{P}(\lambda)\implies f_X=\frac{\lambda^xe^{-\lambda}}{x!}$. So, the likelihood of obtaining the sample $\{x_1,x_2,\ldots x_n\}$ is $L(\lambda)=\prod_{i=1}^nf_X(x_i)$, since the elements of the sample are i.i.d.
+
+\begin{gather*}
+\begin{aligned}
 L&=\prod_{i=1}^n\frac{\lambda^{x_i}e^{-\lambda}}{x_i!}\\
-&=\frac{\lambda^{\Sigma x}e^{-n\lambda}}{\prod (x_i!)}
-\end{align*}
-\begin{align*}
-\implies L'/\prod (x_i!)&= \left(\lambda^{\Sigma x}e^{-n\lambda}\right)'\\
-&= \Sigma x \lambda^{\Sigma x-1} e^{-n\lambda}
-+ \lambda^{\Sigma x}e^{-n\lambda}(-n)\\
-&=e^{-n\lambda}\lambda^{\Sigma x-1}\left( \Sigma x - n\lambda \right)
-\end{align*}
-Setting $L'=0$, we get $\lhat$:\begin{align*}
-&0=\Sigma x_i - n\lhat\\
-&\implies\lhat= \Sigma x_i/n = \overline{x}\qed
-\end{align*}
+&=\frac{\lambda^{\Sigma x}e^{-n\lambda}}{\prod (x_i!)}=\lambda^{\Sigma x}e^{-n\lambda}/\mathcal{C}\\
+\end{aligned}\displaybreak\\
+\implies L\mathcal{C}=\lambda^{\Sigma x}e^{-n\lambda}\\
+\implies \log L+\log\mathcal{C}=\Sigma x\log\lambda-n\lambda\\
+\implies L'/L=\Sigma x/\lambda-n\\
+\implies 0=\Sigma x/\hat\lambda-n\\
+\implies\lhat= \Sigma x_i/n = \overline{x}\qed
+\end{gather*}
 
 \setsection{4}
-As in the previous problem,
-\begin{align*}
+As in the previous problem,\begin{gather*}
+\begin{aligned}
 L(\theta)&=\prod_{i=1}^n\frac{x_i^3e^{-x_i/\theta}}{6\theta^4}\\
 &=\frac{(\Pi x)^3e^{-\Sigma x/\theta}}{6^n\theta^{4n}}\\
-&=ke^{-\Sigma x/\theta}\theta^{-4n}
-\end{align*}
-\begin{align*}
-\implies L'/k&=e^{-\Sigma x/\theta}\left(\Sigma x/\theta^2\right)\theta^{-4n}\\
-&+e^{-\Sigma x/\theta}(-4n)\theta^{-4n-1}\\
-&=e^{-\Sigma x/\theta}\theta^{-4n-1}\left(\frac{\Sigma x}{\theta}-4n\right)
-\end{align*}
-Setting $L'=0$:
-\begin{gather*}
-0=\frac{\Sigma x}{\hat{\theta}}-4n\\
-\begin{aligned}
-\implies \hat{\theta}&=\frac{\Sigma x}{4n}\\
-&=\overline{x}/4
-\end{aligned}
+&=\mathcal{C}e^{-\Sigma x/\theta}\theta^{-4n}\\
+\end{aligned}\\
+\implies \log L-\log C=-\Sigma x/\theta-4n\log\theta\\
+\implies L'/L=\Sigma x/\theta^2-4n/\theta\\
+\implies 0=\frac{\Sigma x}{\hat{\theta}}-4n\\
+\implies \hat{\theta}=\frac{\Sigma x}{4n}=\overline{x}/4
 \end{gather*}
 
 \setsection{5}
@@ -193,15 +186,19 @@ For an unbiased estimator of $\mu$,\begin{gather*}
 
 \setsection{27}
 \subsection{}
+\begin{align*}
+\hat\sigma^2&=\frac{1}{n}\Sigma(x_i-\bar x)^2\\
+&=\frac{\sigma^2}{\sigma^2}\frac{n-1}{n}\frac{1}{n-1}\Sigma(x_i-\bar x)^2\\
+&=\frac{\sigma^2}{n}\frac{(n-1)S^2}{\sigma^2}
+\end{align*}
+Where $\frac{(n-1)S^2}{\sigma^2}\sim\chi_{n-1}^2$.
+
 \begin{gather*}
 \begin{aligned}
-&\ev{\hat{\sigma}^2}\\
-&=\frac{1}{n}\e\Sigma(X_i^2+\overline X^2-2X_i\overline X)\\
-&=\frac{1}{n}(\e\Sigma X_i^2+n\e\overline X^2-2\e(\overline X\Sigma X_i))\\
-&=\frac{1}{n}\e\Sigma X_i^2+\e\overline X^2-2\e\overline X^2\\
-&=\frac{1}{n}\e\Sigma X_i^2-\e\overline X^2\\
-&=\cancel{\mu^2}+\sigma^2-\cancel{\mu^2}-\sigma^2/n\\
-&=\sigma^2(1-1/n)\\
+\ev{\hat{\sigma}^2}
+&=\ev{\frac{\sigma^2}{n}\frac{(n-1)S^2}{\sigma^2}}\\
+&=\frac{\sigma^2}{n}\ev{\frac{(n-1)S^2}{\sigma^2}}\\
+&=\frac{\sigma^2}{n}(n-1)=\sigma^2(1-1/n)
 \end{aligned}\\
 \begin{aligned}
 \implies \mathrm{Bias}(\hat\sigma^2)&=\ev{\hat\sigma^2}-\sigma^2\\
@@ -210,9 +207,83 @@ For an unbiased estimator of $\mu$,\begin{gather*}
 \end{gather*}
 
 \subsection{}
+\begin{align*}
+\var\hat\sigma^2
+&=\frac{\sigma^4}{n^2}\var\frac{(n-1)S^2}{\sigma^2}\\
+&=\frac{\sigma^4}{n^2}2(n-1)=2\sigma^4(n-1)/n^2
+\end{align*}
 
-
+\subsection{}\begin{align*}
+\mathrm{MSE}
+&=\mathrm{Var}(\hat\sigma^2)+\mathrm{Bias}^2(\hat\sigma^2)\\
+&=\frac{2\sigma^4(n-1)}{n^2}+\frac{\sigma^4}{n^2}\\
+&=\sigma^4(2n-1)/n^2
+\end{align*}
 \setsection{34}
+
+\subsection{}
+\begin{gather*}
+f(x)=6x^5/\theta^6\\
+\implies F(x)=\intg{0}{x}{6x^5/\theta^6}{t}=x^6/\theta^6\\
+\begin{aligned}
+f_{X,\max}
+&= f_{(n)}(x)\\
+&=nf(x)F^{n-1}(x)\\
+&=n\frac{6x^5}{\theta^6}\frac{x^{6n-6}}{\theta^{6n-6}}\\
+&=6nx^{6n-1}/\theta^{6n}
+\end{aligned}
+\end{gather*}
+
+\subsection{}
+\begin{gather*}
+\begin{aligned}
+\ev{X_{\max}}
+&=\intg{0}{\theta}{x\frac{6nx^{6n-1}}{\theta^{6n}}}{x}\\
+&=\frac{6n}{\theta^{6n}}\left.\frac{x^{6n+1}}{6n+1}\right|_0^\theta\\
+&=\frac{6n}{6n+1}\theta
+\end{aligned}
+\end{gather*}
+
+\subsection{}
+\begin{align*}
+\bias
+&=\ev{X_{\max}}-\theta\\
+&=\theta\left(\frac{6n}{6n+1}-1\right)\\
+&=\frac{-\theta}{6n+1}
+\end{align*}
+
+\subsection{}
+\begin{gather*}
+\begin{aligned}
+\ev{X_{\max}^2}
+&=\intg{0}{\theta}{x^2\frac{6nx^{6n-1}}{\theta^{6n}}}{x}\\
+&=6n\theta^2/(6n+2)\\
+\end{aligned}\\
+\begin{aligned}
+\var&=EX_{\max}^2-E^2X_{\max}\\
+&=\frac{3 \theta ^2 n}{(3 n+1) (6 n+1)^2}\\
+\end{aligned}\\
+\mse=\var+\bias^2=\frac{\theta ^2}{18 n^2+9 n+1}
+\end{gather*}
+
 \setsection{36}
+\subsection{}\begin{align*}
+\ev{W}
+&=\ev{a\overline X}+\ev{(1-a)\overline Y}\\
+&=a\e\overline X+(1-a)\e\overline Y\\
+&=a\mu+(1-a)\mu=1
+\end{align*}
+
+\subsection{}\begin{gather*}
+\begin{aligned}
+\var W
+&=\var{(a\bar X+(1-a)\bar Y)}\\
+&=a^2 \var\bar X+(1-a)^2\var\bar Y\\
+&=a^2\sigma_1^2/n+(1-a)^2\sigma_2^2/m\\
+\end{aligned}\\
+\implies \var{'(W)}=2a\sigma_1^2/n-2(1-a)\sigma_2^2/m\\
+\implies \hat a\sigma_1^2/n=\sigma_2^2/m-\hat a\sigma_2^2/m\\
+\implies \hat a=\frac{\sigma_2^2/m}{\sigma_1^2/n+\sigma_2^2/m}
+\end{gather*}
 
 \end{document}
