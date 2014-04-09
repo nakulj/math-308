@@ -7,6 +7,7 @@
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\arabic{equation}}
 \renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\sdiff}{\Sigma d_i^2}
 
 \title{MATH 308 Assignment 16:\\Exercises 6.4}
 \date{April 10, 2014}
@@ -72,23 +73,22 @@ L(\mu)&=\prod_{i=1}^n\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x_i-\mu)^2}{2\sigma^2
 \implies 0=\Sigma x-n\hat{\mu}\\
 \implies \hat{\mu}=\Sigma x/n=\overline{x}
 \end{gather*}
+
 \subsection{}
 \begin{gather*}
-\begin{align*}
-L(\sigma)&=\prod_{i=1}^n\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}\\
-&=\frac{\mathcal{C}}{\sigma^n}\prod_{i=1}^ne^{\frac{-x_i^2-\mu^2+2x_i\mu}{2\sigma^2}}\\
-&=\frac{\mathcal{C}}{\sigma^n}
-e^\frac{-\Sigma x^2-n\mu^2+2\mu\Sigma x}{2\sigma^2}
-\end{align*}\\
-\implies L/\mathcal{C}=e^\frac{-\Sigma x^2-n\mu^2+2\mu\Sigma x}{2\sigma^2}/\sigma^n\\
-\implies \log L-\log\mathcal{C}=\frac{-\Sigma x^2-n\mu^2+2\mu\Sigma x}{2\sigma^2}-n\log\sigma\\
-\implies L'/L=(\Sigma x^2+n\mu^2-2\mu\Sigma x)/\sigma^3-n/\sigma\\
-\implies 0=(\Sigma x^2+n\mu^2-2\mu\Sigma x)/\hat\sigma^2-n\displaybreak\\
 \begin{aligned}
-\implies \hat\sigma^2&=(\Sigma x^2+n\mu^2-2\mu\Sigma x)/n\\
-&=\frac{\Sigma x^2}{n}+\mu^2-2\mu\overline{x}\\
+L(\sigma)&=\prod_{i=1}^n\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}\\
+&=\frac{\mathcal{C}}{\sigma^n}\prod_{i=1}^ne^{\frac{\sdiff}{2\sigma^2}}\\
 \end{aligned}\\
-\implies\hat\sigma=\sqrt{\frac{\Sigma x^2}{n}+\mu^2-2\mu\overline{x}}
+\implies L/\mathcal{C}=e^\frac{\sdiff}{2\sigma^2}/\sigma^n\\
+\implies \log L-\log\mathcal{C}=-\frac{\sdiff}{2\sigma^2}-n\log\sigma\\
+\implies L'/L=\sdiff/\sigma^3-n/\sigma\\
+\implies 0=\sdiff/\hat\sigma^2-n\displaybreak\\
+\begin{aligned}
+\implies \hat\sigma^2&=\sdiff/n\\
+&=\Sigma(X_i-\mu)^2/n
+\end{aligned}\\
+\implies\hat\sigma=\sqrt{\Sigma(X_i-\mu)^2/n}
 \end{gather*}
 
 
