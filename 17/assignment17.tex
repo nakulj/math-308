@@ -113,8 +113,15 @@ Therefore the CI is $[\Delta^*-qS,\Delta^*+qS]=\left[\bar X-\bar Y-qS_p\sqrt{\fr
 1-\alpha&=P(-q_{\alpha/2}\le2\lambda X\le q_{1-\alpha/2})\\
 &=P\left(\frac{-q_1}{2X}\le \lambda \le \frac{q_2}{2X}\right)\\
 \end{align*}
-The CI is therefore $\approx[0.242/X,5.57/X]$
-\setsection{37}
+The CI is therefore $\approx[0.242/X,5.57/X]$.
 
+\setsection{37}
+\begin{gather*}
+\frac{(n-1)S^2}{\sigma^2}\sim\chi_{n-1}^2\\
+\implies 1-\alpha=P\left(q_1\le \frac{(n-1)S^2}{\sigma^2} \le q_2\right)\\
+=P\left( \frac{q_1}{(n-1)S^2} \le \frac{1}{\sigma^2} \le \frac{q_2}{(n-1)S^2} \right)\\
+=P\left( \frac{(n-1)S^2}{q_1} \ge \sigma^2 \ge \frac{(n-1)S^2}{q_2} \right)\\
+\implies \text{CI}=[(n-1)S^2/q_2,(n-1)S^2/q_1]\qed
+\end{gather*}
 
 \end{document}
