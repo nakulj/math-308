@@ -13,6 +13,10 @@
 
 
 %Math commands
+\newcommand*{\asim}{\mathrel{\vcenter{\offinterlineskip
+\vskip-.25ex\hbox{\hskip.55ex$\cdot$}\vskip-.25ex\hbox{$\sim$}
+\vskip-.5ex\hbox{\hskip.55ex$\cdot$}}}}
+
 \newcommand{\ev}[1]{\mathbb{E}\left(#1\right)}
 \newcommand{\e}{\mathrm{E}}
 \newcommand{\ov}[1]{\mathbb{O}(#1)}
@@ -23,6 +27,8 @@
 \newcommand{\var}[1][\text{ }]{\mathrm{Var}#1}
 \newcommand{\mse}{\mathrm{MSE}}
 
+
+\renewcommand{\bar}[1]{\overline{#1}}
 
 %Sectioning commands
 \newcommand{\setsection}[1]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{}}
@@ -47,5 +53,6 @@
 \includegraphics[width=0.4\textwidth]{#1}
 \end{figure}
 }
+\newcommand{\himg}[1]{\includegraphics[width=0.4\textwidth]{#1}}
 
 \newcommand{\N}[2]{\sim\mathcal{N}\left(#1,#2\right)}

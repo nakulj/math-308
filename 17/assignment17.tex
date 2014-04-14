@@ -20,18 +20,100 @@ This is a correct interpretation.
 No, by same reasoning as (c).
 
 \setsection{2}
-
+$1-\alpha=0.95\implies 1-\frac{\alpha}{2}=0.975$. The 95\% confidence interval is given by $\bar{X}\pm z_{0.975}\sigma/\sqrt{n}\approx 538\pm 39=[499,577]$.
 
 \setsection{7}
+$1-\alpha=0.95\implies \alpha=0.05$. The 95\% lower $t$ confidence bound is $\bar X-t_{n-1,0.05}S/\sqrt{n}\approx 118$. This means that we can be 95\% confident that the typical battery will last more than 122 hours.
+
+
 \setsection{8}
+\img{8.pdf}
+We can see that the rate of the CI being too low (blue) somewhat decreases, that of the CI being to high (red) somewhat increases, and the overall miss rate (green) somewhat decreases. However, it must be noted that the plot is highly zoomed in and the actual change between any two endpoints is less than 1\%.
+
 \setsection{10}
+\begin{align*}
+n&=43		&	m&=36\\
+\bar X&=5.8	&	\bar Y&=1.9\\
+S_1&=8.6		&	S_2&=4.2
+\end{align*}
+\begin{gather*}
+\nu\equiv\frac{(S_1^2/n+S_2^2/m)^2}{
+	\frac{(S_1^2/n)^2}{n-1}+
+	\frac{(S_2^2/n)^2}{m-1}
+}\approx 63\\
+\begin{aligned}
+T
+&\equiv\frac{(\bar X-\bar Y)-(\mu_X-\mu_Y)}{\sqrt{S_1^2/n+S_2^2/m}}\\
+&\equiv\frac{\Delta^*-\Delta}{S}\asim T(\nu)\\
+\end{aligned}\\
+1-\alpha=0.95\implies1-\alpha/2=0.975\\
+\implies t\equiv t_{\nu,1-\alpha/2}\approx 2.0\\
+\end{gather*}
+The CI is therefore $\Delta^*\pm tS\approx 3.9\pm 3.0=(0.9,6.9)$. This interval tells us that we can be 95\% confident that a severely obese patient on a low-carbohydrate diet will loose between 0.9 and 6.9 kilograms more than one on a low-fat diet.
+
 \setsection{12}
+\subsection{}
+\img{12.pdf}
+Smoker data in red. Non-smoker data in blue. The plot points to greater birth weight for non-smoking mothers.
+\subsection{}
+95\% CI is (-47,616). This interval tells us that we cannot eliminate the possibility that the difference in means is zero.
+
+
 \setsection{17}
+\subsection{Uniform (0,1) Distribution }
+\himg{17unif10.pdf}
+\clearpage
+\himg{17unif20.pdf}
+\himg{17unif250.pdf}
+
+It can be seen that the statistic distribution is very close to the the $t$-distribution, even for small values of $n$.
+
+\subsection{Exponential (1) Distribution}
+\himg{17exp20.pdf}
+\himg{17exp250.pdf}\\
+As with the previous distribution, the statistic closely follows the $t$-distribution.
+\clearpage
+
 \setsection{20}
+\subsection{}$[44\%,50\%]$.
+\subsection{}$[53\%,60\%]$. The intervals do not overlap. We can conclude with 95\% confidence that a man is more likely to have voted for Bush than Women. 
+\subsection{}$[-14\%,-5\%]$. This tells us with 95\% confidence that between 5\% and 14\% fewer women than men voted for Bush.
+
 \setsection{24}
+-16\%. This tells us that we can be 95\% confident that at least 16\% fewer patients on aspirin will have one or more adenomas than those on a placebo.
+
 \setsection{25}
+\subsection{}
+\begin{table}[h]
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+Min. & 1st Qu. & Median & Mean  & 3rd Qu. & Max.    \\ \midrule
+1.00 & 5.00    & 14.20  & 78.08 & 55.50   & 1550.00 \\ \bottomrule
+\end{tabular}
+\end{table}
+\himg{25.pdf}\\
+The data is concentrated around zero with several large outliers.
+\subsection{}
+$1-\alpha=0.95\implies 1-\alpha/2=0.975\implies t\equiv t_{268,1-\alpha/2}\approx 1.97$. Therefore 95\% CI is $\bar X\pm tS/\sqrt{n}\approx 78.1\pm25.2=[52.9,103.3]$.
+\subsection{}
+Bootstrap percentile confidence interval from Assignment 15, Problem 10: $[55.0,104.61]$. Bootstrap $t$ confidence interval: $[57.0,111.7]$. We report the bootstrap $t$ confidence interval due to the large sample size and high skewness of the underlying data.
+
 \setsection{31}
+From Thm 7.1, \[
+T=\frac{\bar X-\bar Y-(\mu_1-\mu_2)}{S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\sim T(n_1+n_2-2)\]
+Let $\Delta^*\equiv\bar X-\bar Y$,$\Delta\equiv\mu_1-\mu_2$, and $S\equiv{S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}$.
+\begin{align*}
+\implies 1-\alpha&=
+P\left(-q\le \frac{\Delta^*-\Delta}{S} \le q\right)\\
+&=P\left(\Delta^*-qS<\Delta<\Delta^*+qS\right)\\
+\end{align*}
+Therefore the CI is $[\Delta^*-qS,\Delta^*+qS]=\left[\bar X-\bar Y-qS_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}},\bar X-\bar Y+qS_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}\right]\qed$
 \setsection{34}
+\begin{align*}
+1-\alpha&=P(-q_{\alpha/2}\le2\lambda X\le q_{1-\alpha/2})\\
+&=P\left(\frac{-q_1}{2X}\le \lambda \le \frac{q_2}{2X}\right)\\
+\end{align*}
+The CI is therefore $\approx[0.242/X,5.57/X]$
 \setsection{37}
 
 
