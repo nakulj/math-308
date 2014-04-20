@@ -7,5 +7,36 @@
 \begin{document}
 \maketitle
 
+\setsection{4}
+p=$P(X>=20)=\text{\code{1-ppois(19,lambda=15)}}\approx 12.5\%$. This implies that more than 10\% of the months will have a birth rate as extreme as the one observed, which means that we cannot reject the null ($\lambda=15$) even at the 5\% significance level.
+
+\setsection{6}
+\subsection{} Running the test gives a $p$-value of $10^{-4}$. This lets us reject the null hypothesis (that the difference in means is zero) at the $1\%$ significance level.
+\subsection{} The random assignment of seedlings to plots tends to remove confounding effects. Thus, the result hints at a causal relationship between presence of competition and diameter change.
+
+\setsection{11}
+Running the chi-squared test gives a $p$-value of $0.012$, allowing us to reject the null at the 5\% significance level.
+
+\setsection{14}
+A Type I error would be incorrectly concluding that the drug is effective when in fact it is not. This would lead to to patients wasting money on a useless drug.
+
+A Type II error would be failing to conclude that the drug is effective, when in fact it is. This would lead to a waste of the research money put into the drug, since the pharmaceutical company would then not be able to sell it.
+
+\setsection{16}
+Under the null, $\bar X\N{25}{16/30}$. Thus $Z=\frac{\bar X-25}{4/\sqrt{30}}$, where $Z$ is a standard normal random variable. Thus, the null is rejected if $Z\ge z_{1-\alpha}
+\implies \frac{\bar X-25}{4/\sqrt{30}}\ge z_{0.95}\implies \bar X\ge 25+\frac{4z_{0.95}}{\sqrt{30}}\equiv C$.
+
+But $\bar X \N{27}{16/\sqrt{30}}\implies Z=\frac{\bar X-27}{4/\sqrt{30}}$. So, \begin{align*}
+	1-\beta&=P(\bar X\ge C|\mu=27)\\
+	&=P\left(\frac{4Z}{\sqrt{30}}+27\ge C\right)\\
+	&=P\left(Z\ge\frac{\sqrt{30}(C-27)}{4}\right)\equiv P(Z \ge C_1)\\
+	&=1-P(Z<C_1)\approx 86.3\%
+\end{align*}
+
+\setsection{17}
+\setsection{18}
+\setsection{25}
+\setsection{36}
+\setsection{37}
 
 \end{document}
