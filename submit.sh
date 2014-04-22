@@ -4,4 +4,4 @@ git clean -f -X
 ./compile.sh 3 8 9 10 11
 ./compile.sh 4 12 13 14 15
 ./compile.sh 5 16 17
-./compile.sh 6 18 19
+./compile.sh 6 18 19 20
