@@ -34,9 +34,82 @@ But $\bar X \N{27}{16/\sqrt{30}}\implies Z=\frac{\bar X-27}{4/\sqrt{30}}$. So, \
 \end{align*}
 
 \setsection{17}
-\setsection{18}
-\setsection{25}
-\setsection{36}
-\setsection{37}
+The null is rejected if  $\bar X \ge \mu_0+\frac{z_{1-\alpha}\sigma}{\sqrt{n}}\equiv C$, where $\mu_0=1,\alpha=0.01\text{ and } \sigma=0.3$. So,
+\begin{gather*}
+\begin{aligned}
+1-\beta&=P(\bar X\ge C|\mu=\mu_1)\\
+&=P\left(\frac{Z\sigma}{\sqrt{n}}+\mu_1\ge C\right)\\
+&=P\left(Z\ge\frac{\sqrt{n}(C-\mu_1)}{\sigma}\right)\equiv P(Z\ge C_1)\\
+&=1-P(Z<C_1)\\
+\end{aligned}\\
+\implies \beta =P(Z<C_1)\\
+\implies z_\beta=C_1=\frac{\sqrt{n}(C-\mu_1)}{\sigma}\\
+\implies \frac{z_\beta \sigma}{\sqrt{n}}+\mu_1=C=\frac{z_{1-\alpha}\sigma}{\sqrt{n}}+\mu_0\\
+\implies n=\left(
+	\frac{\sigma(z_\beta-z_{1-\alpha})}{\mu_0-\mu_1}
+\right)^2=8
+\end{gather*}
 
+
+\setsection{18}
+\begin{align*}
+n&=\left(
+	\frac{\sigma(z_\beta-z_{1-\alpha})}{\mu_0-\mu_1}
+\right)^2=1
+\end{align*}
+
+
+\setsection{25}
+$f(x)=\lambda e^{-\lambda x}\implies F(x)=\intg{0}{x}{\lambda e^{-\lambda t}}{t}=1-e^{-\lambda t}$
+\subsection{}
+\begin{gather*}
+\begin{aligned}
+F_{X,\min}(x)&=\prod_{i=1}^{15} P(X_i\le x)\\
+&=(1-F(x))^{15}\\
+&=e^{-15\lambda x}
+\end{aligned}\\
+\begin{aligned}
+\implies \alpha &=P(X_{\min}\ge 1|\lambda=1/5)\\
+&=1-\left.F_{X,\min}(1)\right|_{\lambda=\frac{1}{5}}\\
+&=1-e^{-3}\approx 95\%
+\end{aligned}
+\end{gather*}
+
+\subsection{}
+\begin{align*}
+1-\beta&=P(X_{\min} \ge 1|\lambda=1/25)\\
+&=1-\left.F_{X,\min}(1)\right|_{\lambda=\frac{1}{25}}\\
+&=1-e^{-3/5}\approx 45\%
+\end{align*}
+
+\setsection{36}
+The most powerful test simply always rejects the null. Thus, the critical region is $X_1,X_2\in [0,n]$.
+
+
+\setsection{37}
+Under the null, the likelihood is maximised at $\mu=\mu_0$ and $\sigma^2=\Sigma(X_i-\mu_0)^2/n\equiv\hat\sigma^2$.
+Thus, the likelihood under the null is\[
+L_{H,0}=\left(\frac{1}{\hat\sigma\sqrt{2\pi}}
+\right)^n\exp\left(
+\frac{-\Sigma(X_i-\mu_0)^2}{2\hat\sigma^2}
+\right)=\frac{e^{-n/2}}{(\hat\sigma\sqrt{2\pi})^n}
+\]
+To maximise the likelihood, we simply use $\mu=\bar X$ and $\sigma=\sqrt{\Sigma(X_i-\bar X)^2/n}$, giving \[
+L=\left(\frac{1}{S\sqrt{2\pi}}
+\right)^n\exp\left(
+\frac{-\Sigma(X_i-\bar X)^2}{2S^2}
+\right)=\frac{e^{-n/2}}{(S\sqrt{2\pi})^n}
+\]
+The likelihood ratio is therefore $(S/\hat\sigma)^n$. So, we reject if\begin{gather*}
+\left(\frac{\Sigma (X_i-\bar X)^2}{\Sigma(X_i-\mu_0)^2}\right)^{n/2}\le c \implies \frac{\Sigma (X_i-\bar X)^2}{\Sigma(X_i-\mu_0)^2} \le c_1\\
+\begin{aligned}
+\implies c_1&\le \frac{\Sigma(X_i-\mu_0)^2}{\Sigma (X_i-\bar X)^2}
+=\frac{\Sigma(X_i-\bar X+\bar X-\mu_0)^2}{\Sigma (X_i-\bar X)^2}\\
+&\le1+\frac{n(\bar X-\mu_0)^2-2(\bar X-\mu_0)\cancel{\Sigma(X_i-\bar X)}}{\Sigma (X_i-\bar X)^2}\\
+&\le 1+\frac{n}{\Sigma (X_i-\bar X)^2} (\bar X-\mu_0)^2\\
+\end{aligned}\\
+\implies c_2\le\sqrt{\frac{n}{\Sigma (X_i-\bar X)^2}}(\bar X-\mu_0)
+=\frac{\bar X-\mu_0}{S/\sqrt{n}}
+\end{gather*}
+which is a $t$-statistic. Thus, the test is a one-sided $t$-test. $\qed$
 \end{document}
