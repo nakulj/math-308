@@ -6,4 +6,25 @@
 
 \begin{document}
 \maketitle
+\section{}
+The null is rejected if $\bar X>\mu_0+\frac{z_{1-\alpha}}{\sqrt{n}}\equiv C$. But, $\bar X\N{\mu}{1^2/n}\implies \bar X=\mu+\frac{Z}{\sqrt{n}}$ \begin{align*}
+\therefore\beta(\mu)
+&=P(\bar X >C)\\
+&=1-P(\bar X \le C)\\
+&=1-P\left(\mu+\frac{Z}{\sqrt{n}}\le C\right)\\
+&=1-P(Z\le(C-\mu)\sqrt{n})\\
+&=1-\Phi((C-\mu)\sqrt{n})\\
+&=1-\Phi(z_{1-\alpha}+(\mu_0-\mu)\sqrt{n})
+\end{align*}
+\section{}
+Setting $\alpha=0.05,\mu_0=0$ and $n=100$, we get
+\[
+\beta(\mu)=1-\Phi(z_{0.95}-10\mu)
+\]
+\img{plot.pdf}
+\section{}\begin{gather*}
+0.8=1-\Phi(z_{0.95}+(0-1)\sqrt{n})\\
+\implies z_{0.2}=z_{0.95}-\sqrt{n}\\
+\implies n=(z_{0.95}-z_{0.2})^2\approx 7
+\end{gather*}
 \end{document}
