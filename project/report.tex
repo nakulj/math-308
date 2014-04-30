@@ -1,0 +1,58 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+\title{MATH 308 Project Report\\VARC Attendance Data Analysis}
+\date{April 30, 2014}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\abstract{The Viterbi Academic Resource Center (VARC) holds thirty minute, one-on-one sessions to assist students with introductory engineering coursework. VARC has recently been trying to solve an appointment utilisation problem: on some days, there are not enough sessions available, while on others, tutors sit at their offices with nothing to do. For my project, I have tried to analyse historical attendance data, to see if the situation can be improved.}
+
+\section{Hypotheses}
+\begin{description}
+	\item[$H_0$] The session utilisation rate does not vary significantly between days of the week. In other words, the availability of sessions has already been optimally distributed throughout the week.
+	\item[$H_A$] The session utilisation rate varies between days of the week.
+\end{description}
+
+\section{Data Testing}
+VARC data from the year 2013 was analysed, listing over 4,000 sessions along with details such as day of week, and whether or not an appointment was cancelled.
+
+For the purposes of the study, a session was considered `used' simply if it had been booked, even if the student subsequently did not show. A session that had been cancelled was not counted as `used', unless it had been subsequently re-booked.
+
+A few appointments were conducted on weekends; these were dropped. The data was then grouped by day of the week and a proportions test was carried out across the groups. The essential \code{R} code used for the same has been listed below:
+
+\begin{lstlisting}
+usage=0
+avail=0
+for(i in datasets) {
+	data<-read.csv(i)
+	data$USED=
+		(data$CONDUCTED | data$NOSHOW)
+	usage<-usage+
+		tapply(data$USED,data$DOW,sum)
+	avail<-avail+
+		tapply(data$USED,data$DOW,length)
+}
+prop.test(usage,avail)
+\end{lstlisting}
+\vspace{-1.5em}
+\section{Results}
+\vspace{-1.25em}
+\begin{lstlisting}
+5-sample test for equality of proportions
+without continuity correction
+
+data:  usage out of avail
+X-squared = 37.4144, df = 4, p-value = 1.48e-07
+alternative hypothesis: two.sided
+sample estimates:
+prop 1    prop 2    prop 3    prop 4    prop 5 
+0.6558287 0.7615063 0.7131783 0.6369231 0.6597582 
+\end{lstlisting}
+
+\section{Conclusion}
+The data clearly allows us to reject the null. It seems that VARC could benefit by moving some sessions to Tuesday and Wednesday; however, cross-validation will be required for the same.
+
+\end{document}
