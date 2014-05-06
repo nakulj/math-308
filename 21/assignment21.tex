@@ -1,0 +1,42 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+\title{MATH 308 Assignment 21:\\Least-squares estimates for Linear Models}
+\date{May 1, 2014}
+
+\begin{document}
+\maketitle
+
+\section{Least Squares Estimate}
+
+\begin{gather*}
+\begin{aligned}
+L(\beta,\sigma)
+&=\prod_{i=1}^n\frac{1}{\sigma\sqrt{2\pi}}
+	e^{-\frac{(Y_i-\beta x_i)^2}{2\sigma^2}}\\
+&=(\sigma\sqrt{2\pi})^n e^{-\frac{\Sigma(Y_i-\beta x_i)^2}{2\sigma^2}}\\
+\end{aligned}\\
+\implies \log L=-n\log\sigma-n\log\sqrt{2\pi}-\frac{\Sigma(Y_i-\beta x_i)^2}{2\sigma^2}\\
+% \implies \frac{1}{L}\frac{\partial L}{\partial\sigma}=-\frac{n}{\sigma}+\frac{\Sigma(Y_i-\beta x_i)^2}{2\sigma^3}\\
+% \implies \hat\sigma=\sqrt{\frac{\Sigma(Y_i-\beta x_i)^2}{n}}\\
+\implies\frac{\partial L}{\partial\beta}=-\frac{1}{2\sigma^2}\Sigma(2(Y_i-\beta x_i)(-x_i))\\
+\implies 0=\Sigma(\hat\beta x_i^2-x_iY_i)=\hat\beta\Sigma x_i^2-\Sigma x_iY_i\\
+\implies \hat\beta=\frac{\Sigma x_iY_i}{\Sigma x_i^2}
+\end{gather*}
+
+\newpage
+
+\section{Confidence Interval}
+\begin{align*}
+\var{[\hat\beta]}&=\var{\left[\frac{\Sigma x_iY_i}{\Sigma x_i^2}\right]}\\
+&=\frac{1}{(\Sigma x_i^2)^2}\Sigma(x_i^2\var{[Y_i]})\\
+&=\frac{\Sigma(x_i^2\sigma^2)}{(\Sigma x_i^2)^2}\\
+&=\frac{\sigma^2}{\Sigma x_i^2}
+\end{align*}
+$\sigma^2$ is unknown, so we use the estimate $S^2=\frac{\Sigma Y_i^2}{n-1}$, where the $n-1$ denominator is chosen because only one parameter is being estimated.
+
+The statistic $T\equiv\frac{\hat \beta-\beta}{S/\sqrt{\Sigma x_i^2}}$ then has a $t$-distribution on $n-1$ degrees of freedom.
+
+Thus, the $1-\alpha$ confidence interval is given by
+\[\hat\beta\pm \frac{S}{\sqrt{\Sigma x_i^2}}t_{n-1,1-\alpha/2}\]
+\end{document}

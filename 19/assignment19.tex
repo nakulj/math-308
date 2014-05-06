@@ -1,5 +1,6 @@
 \documentclass[twocolumn]{article}
 \input{../common.tex}
+\usepackage{mhchem}
 
 \title{MATH 308 Assignment 19:\\Exercises 9.7}
 \date{April 22, 2014}
@@ -34,13 +35,85 @@ g(a,b)=\Sigma(y_i-\hat y_i)^2\\
 
 
 \setsection{10}
-\begin{align*}
-\Sigma (\hat y_i -\bar y)^2
-&=\sigma
-\end{align*}
+\subsection{}
+
+\begin{gather*}
+r=\frac{ss_{xy}}{\sqrt{ss_x ss_y}}, b=\frac{ss_{xy}}{ss_x}\\
+\begin{aligned}
+\Sigma(\hat y_i-\bar y)^2&=\Sigma(a+bx_i-(a+b\bar x))^2\\
+&=b^2\Sigma(x_i-\bar x)^2=b^2 ss_x
+=\frac{ss_{xy}^2}{ss_x}\\
+&=r^2ss_y\\
+\implies s_{\hat y}
+&=\sqrt{
+	\frac{\Sigma(\hat y_i-\bar y)^2}
+	{n-1}}
+=r\sqrt{\frac{ss_y}{n-1}}\\
+&=r\sqrt{
+	\frac{\Sigma(y_i-\bar y)^2}
+	{n-1}
+}=rs_y\qed
+\end{aligned}
+\end{gather*}
+
+\subsection{}
+\begin{gather*}
+\bar e=\Sigma(y_i-\hat y_i)/n=0\\
+\implies s_e=\sqrt{\frac{\Sigma(y_i-\hat y_i-0)^2}{n-1}}\\
+\begin{aligned}
+\implies &(n-1)s_e^2\\
+&=\Sigma(y_i-\hat y_i)^2\\
+&=\Sigma(y_i-\bar y+\bar y-\hat y_i)^2\\
+&=\Sigma(y_i-\bar y)^2+\Sigma(\bar y-\hat y_i)^2\\&-2\Sigma(y_i-\bar y)(\hat y_i-\bar y)\\
+&=ss_y+r^2ss_y-2\Sigma(y_i\hat y_i-\cancel{y_i\bar y}-\hat y_i\bar y+\cancel{{\bar y}^2})\\
+&=ss_y(1+r^2)-2\Sigma(\hat y_i\cancel{(y_i-\bar y)})\\
+\end{aligned}\\
+\implies s_e=\sqrt{\frac{(1+r^2)ss_y}{n-1}}=\sqrt{1+r^2}s_y\qed
+\end{gather*}
+
 \setsection{11}
+\subsection{}
+\begin{gather*}
+b=r\frac{s_w}{s_h}\approx 1.6 a=\bar w-b\bar h\approx 20.1\\
+\implies \hat w=a+bh\approx 20.1+1.6h
+\end{gather*}
+\subsection{}
+$\hat w(5 \text{ ft})=\hat w(60 \text{ in})=116.5\text{ pounds}$
+\subsection{}
+$r^2\approx0.56$, which means that the model explains 56\% of the variability of the weights of the individuals.
+
 \setsection{17}
+\subsection{}
+Correlation is $\approx0.35$
+\img{17a.pdf}
+\subsection{}
+$y=-2380+149x$
+\subsection{}
+The slope is interpreted as `a week increase in gestation period is correlated with a 149g increase in weight'.
+
+The $r^2\approx0.12$ is interpreted as `the linear model explains 12\% of the variation in weights'.
+\subsection{}
+\img{17d.pdf}
+The residual plot shows a curve peaking at week 39. The linear model is therefore inappropriate.
+
+
+
 \setsection{18}
+\subsection{} 457.4 g
+\subsection{} $1-\alpha=0.95\implies 1-\alpha/2=0.975\\\implies t\equiv t_{n-2,1-\alpha/2}=t_{1007,0.975}\approx 1.96$\\
+$\therefore\text{ 95\% CI: }\hat \beta \pm \frac{tS}{\sqrt{ss_x}}=149\pm 24.8\\=(124.2,173.8)$
+
 \setsection{21}
+\subsection{}
+\img{21a.pdf}
+The data is strongly linear, with a correlation of over 0.99.
+\subsection{}
+\[y=-3279.593+1.826x\]
+\newpage
+\subsection{}
+\img{21c.pdf}
+At first, it appears that there is a pattern to the residuals, decreasing until year 2000 and then increasing again. However, looking at the scale of the $y$-axis we see that the largest residual is only ~2, but the \ce{CO2} Levels are of order ~350.
+
+Thus, the apparent pattern can be put down to random error and ignored, making a linear model appropriate.
 
 \end{document}

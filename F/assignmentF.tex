@@ -1,0 +1,34 @@
+\documentclass[twocolumn]{article}
+\input{../common.tex}
+
+\title{MATH 308 Assignment F:\\Sample Final Problem}
+\date{May 2, 2014}
+
+\begin{document}
+\maketitle
+
+\newcommand{\sol}{\textbf{Solution.}}
+
+\emph{Benford's Law}, also known as the \emph{First-Digit Law}, describes the distribution of the first digit of numbers in many real-life sources of data. In base 4, the law states that the leading digit $d \in \{1,2,3\}$ is described by the probability mass function:\[
+P(d)=\log_{4}\left(1+\frac{1}{d}\right)
+\]
+
+A financial auditor is trying to apply Benford's Law to verify the accounts of a client. She knows that if the numbers on the account report deviate significantly from the Benford's Law distribution, the numbers are likely to be fudged. So, she decides to gather a random sample of $n$ numbers from the report, and test them.
+
+\subsection{}
+Describe a test statistic she can use, remembering to state the null and alternative hypotheses about the statistic.\\
+\sol She can use a chi-squared test, by tabulating the frequencies of occurences of each of ${1,2,3}$ as the first digit. Using the pdf, she can also obtain expected values for the same frequencies. The chi-squared statistic $t$ thus obtained is the required test statistc. The null hypothesis is that the data follows Benford's law, i.e. $t\sim\chi^2_2$. The alternative is that it does not.
+\newpage
+\subsection{}
+Assuming that she is testing at the significance level $\alpha$, what is the critical region?\\
+\sol The critical region $c$ is given by \[c=[0,2-a)\cap (2+a,\inf) \], where $P(2-a\le t\le 2+a)=1-\alpha$. $a$ is obtained from a table of chi-square values (2 is the mean of the chi-square on 2 degrees of freedom).
+\subsection{}
+Write a program, using either \code{R} or pseudocode, to perform the test on a dataset.\\
+\sol \begin{enumerate}
+\item Read list of numbers in base 3
+\item Extract observed values by reading first digits
+\item Extract expected values using pmf.
+\item Perform chi-squared test
+\item Compare $p$-value from chi-squared test against $\alpha$.
+\end{enumerate}
+\end{document}
